@@ -8,48 +8,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .admin-gizli { display: none !important; }
-        .map-container iframe { width: 100%; height: 300px; border-radius: 1rem; }
-        
-        /* Giriş Ekranı Animasyonu */
-        #intro-screen {
-            transition: transform 0.8s cubic-bezier(0.87, 0, 0.13, 1);
-        }
-        .intro-hidden {
-            transform: translateY(-100%);
-        }
+        .map-container iframe { width: 100%; height: 350px; border-radius: 1.5rem; }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans overflow-hidden" id="main-body">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-    <div id="intro-screen" class="fixed inset-0 z-[100] bg-zinc-900 flex flex-col items-center justify-center text-center p-6">
-        <div class="max-w-3xl">
-            <i class="fa-solid fa-leaf text-emerald-500 text-6xl mb-6"></i>
-            <h1 class="text-5xl md:text-7xl font-black text-white italic tracking-tighter mb-4">HASİRPLAST</h1>
-            <p class="text-zinc-400 text-lg md:text-xl mb-10 font-light leading-relaxed">
-                Hüseyin Hasırcı güvencesiyle; cami, bahçe ve dekorasyon projeleriniz için <br class="hidden md:block"> 
-                <span class="text-emerald-400 font-bold italic underline">yüksek kaliteli plastik hasır</span> çözümleri.
-            </p>
-            <button onclick="siteyeGirisYap()" class="group relative px-12 py-5 bg-emerald-600 text-white font-black rounded-full overflow-hidden shadow-2xl transition-all hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
-                <span class="relative z-10 flex items-center gap-3">
-                    Ürünleri Gör <i class="fa-solid fa-arrow-right animate-pulse"></i>
-                </span>
-                <div class="absolute inset-0 bg-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-            </button>
-        </div>
-    </div>
-
-    <div id="adminPanel" class="fixed inset-y-0 left-0 w-80 bg-zinc-900 text-white p-6 shadow-2xl z-50 overflow-y-auto admin-gizli border-r border-emerald-500/30">
+    <div id="adminPanel" class="fixed inset-y-0 left-0 w-80 bg-zinc-900 text-white p-6 shadow-2xl z-[100] overflow-y-auto admin-gizli border-r border-emerald-500/30">
         <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-bold text-emerald-400 italic uppercase">YÖNETİM</h3>
+            <h3 class="text-xl font-bold text-emerald-400 italic">YÖNETİM</h3>
             <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-3xl">×</button>
         </div>
-        <div id="productEditorFields" class="space-y-4"></div>
+        <div id="productEditorFields" class="space-y-6"></div>
         <button onclick="localStorage.clear(); location.reload();" class="w-full mt-8 bg-red-900/20 text-red-500 text-[10px] font-bold py-3 rounded border border-red-800/30 uppercase">Sıfırla</button>
     </div>
 
-    <nav class="bg-white shadow-sm sticky top-0 z-40 p-4">
+    <section class="relative h-screen flex items-center justify-center bg-zinc-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 text-center px-6">
+            <h1 class="text-6xl md:text-9xl font-black text-white italic tracking-tighter mb-4 animate-fade-in">HASİRPLAST</h1>
+            <p class="text-emerald-400 text-xl md:text-2xl font-bold uppercase tracking-[0.3em] mb-8">Hüseyin Hasırcı</p>
+            <p class="text-gray-300 max-w-2xl mx-auto text-lg mb-10 leading-relaxed">
+                Bağcılar'dan tüm Türkiye'ye; cami, bahçe ve yaşam alanlarınız için en dayanıklı plastik hasır çözümleri. UV katkılı, antibakteriyel ve uzun ömürlü.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#katalog" class="px-10 py-4 bg-emerald-600 text-white font-black rounded-full shadow-xl hover:bg-emerald-500 transition-all uppercase tracking-widest text-sm">Ürünleri Keşfet</a>
+                <a href="#iletisim" class="px-10 py-4 bg-white/10 text-white backdrop-blur-md border border-white/20 font-black rounded-full hover:bg-white/20 transition-all uppercase tracking-widest text-sm">Bize Ulaşın</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 p-4 border-b">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-black text-emerald-700 italic tracking-tighter">HASİRPLAST</h1>
+            <a href="#" class="text-2xl font-black text-emerald-700 italic tracking-tighter">HASİRPLAST</a>
             <div class="flex gap-4">
                 <a href="tel:+905336586270" class="bg-zinc-100 text-zinc-800 px-4 py-2 rounded-lg font-bold text-xs flex items-center">
                     <i class="fa-solid fa-phone mr-2"></i> ARA
@@ -59,39 +55,55 @@
         </div>
     </nav>
 
-    <section class="py-12 px-4 bg-zinc-100 min-h-screen">
+    <section id="katalog" class="py-24 px-4 bg-white">
         <div class="container mx-auto">
-            <h2 class="text-3xl font-black mb-8 italic uppercase border-l-4 border-emerald-600 pl-4 text-zinc-900">Ürün Kataloğu</h2>
-            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <span class="text-emerald-600 font-bold uppercase tracking-widest text-sm">Koleksiyon</span>
+                    <h2 class="text-5xl font-black italic uppercase text-zinc-900">Ürün Kataloğu</h2>
+                </div>
+                <p class="text-zinc-500 max-w-sm italic font-medium">İhtiyacınıza en uygun modeli seçin, WhatsApp üzerinden anında sipariş verin.</p>
+            </div>
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
         </div>
     </section>
 
-    <section id="iletisim" class="py-16 bg-white px-4 border-t">
-        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="iletisim" class="py-24 bg-zinc-50 px-4 border-t">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-                <h2 class="text-3xl font-black mb-6 italic uppercase text-zinc-900">İletişim & Adres</h2>
-                <div class="space-y-6">
+                <h2 class="text-5xl font-black mb-8 italic uppercase text-zinc-900 underline decoration-emerald-500">İletişim</h2>
+                <div class="space-y-10">
                     <div class="flex items-start">
-                        <i class="fa-solid fa-location-dot text-emerald-600 text-2xl mt-1 mr-4"></i>
-                        <p class="font-bold text-gray-700">İnönü, 359. Sk, 34203<br>Bağcılar/İstanbul, Türkiye</p>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-6 shrink-0">
+                            <i class="fa-solid fa-location-dot text-emerald-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-zinc-400 uppercase text-xs font-bold mb-1 tracking-widest">Adresimiz</p>
+                            <p class="font-bold text-xl text-zinc-800 leading-tight text-gray-700">İnönü, 359. Sk, 34203<br>Bağcılar/İstanbul, Türkiye</p>
+                        </div>
                     </div>
                     <div class="flex items-center">
-                        <i class="fa-solid fa-phone text-emerald-600 text-2xl mr-4"></i>
-                        <a href="tel:+905336586270" class="text-2xl font-black text-zinc-900 hover:text-emerald-700 transition">+90 533 658 62 70</a>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mr-6 shrink-0">
+                            <i class="fa-solid fa-phone text-emerald-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-zinc-400 uppercase text-xs font-bold mb-1 tracking-widest">Bizi Arayın</p>
+                            <a href="tel:+905336586270" class="text-3xl font-black text-zinc-900 hover:text-emerald-700 transition tracking-tighter">+90 533 658 62 70</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="map-container shadow-2xl">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.6457140356545!2d28.835!3d41.035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa4479e000001%3A0x1234567890abcdef!2zQmHEn2P谋bGFyL8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" allowfullscreen="" loading="lazy"></iframe>
+            <div class="map-container shadow-3xl border-8 border-white">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.6133031023226!2d28.832714!3d41.033742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAyJzAxLjUiTiAyOMKwNDknNTcuOCJF!5e0!3m2!1str!2str!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <footer class="bg-zinc-900 text-gray-500 py-10 text-center border-t border-zinc-800">
-        <p onclick="panelGiris()" class="text-[10px] uppercase font-bold cursor-default select-none opacity-40">© 2026 HasırPlast - Hüseyin Hasırcı - Bağcılar / İstanbul</p>
+    <footer class="bg-zinc-900 text-white py-12 text-center">
+        <p onclick="panelGiris()" class="text-[11px] uppercase font-bold cursor-pointer opacity-30 hover:opacity-100 transition">© 2026 HasırPlast - Hüseyin Hasırcı</p>
     </footer>
 
-    <a href="https://api.whatsapp.com/send?phone=905336586270" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-2xl z-50 hover:scale-110 transition">
+    <a href="https://api.whatsapp.com/send?phone=905336586270" target="_blank" class="fixed bottom-8 right-8 bg-green-500 text-white w-20 h-20 rounded-full flex items-center justify-center text-5xl shadow-2xl z-50 hover:scale-110 transition active:scale-90">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -100,48 +112,49 @@
         const grid = document.getElementById('productGrid');
         const editor = document.getElementById('productEditorFields');
 
-        // Giriş Ekranı Fonksiyonu
-        function siteyeGirisYap() {
-            const intro = document.getElementById('intro-screen');
-            const body = document.getElementById('main-body');
-            
-            intro.classList.add('intro-hidden');
-            body.classList.remove('overflow-hidden');
-            
-            // Animasyon bitince ekranı tamamen kaldır (etkileşimi engellememesi için)
-            setTimeout(() => {
-                intro.style.display = 'none';
-            }, 800);
-        }
-
-        // Ürün Üretimi
         for(let i=1; i<=8; i++) {
+            // Katalog Kartları
             grid.innerHTML += `
-                <div class="bg-white rounded-2xl shadow-sm border overflow-hidden flex flex-col hover:shadow-lg transition group">
-                    <div class="overflow-hidden h-48">
-                        <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col hover:-translate-y-2 transition duration-300">
+                    <div class="h-64 overflow-hidden bg-zinc-200">
+                        <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between">
-                        <h3 id="prodName${i}" class="font-black text-lg uppercase italic text-zinc-800">Ürün ${i}</h3>
-                        <div class="flex justify-between items-center mt-4 border-t pt-3">
-                            <span class="text-emerald-700 font-black text-xl italic">₺<span id="prodPrice${i}">0</span></span>
-                            <button onclick="siparis(${i})" class="bg-zinc-900 text-white px-4 py-2 rounded-lg font-black text-[10px] uppercase transition hover:bg-emerald-600">Sipariş</button>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <h3 id="prodName${i}" class="font-black text-xl uppercase italic text-zinc-800 mb-4">Ürün ${i}</h3>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <span class="text-emerald-700 font-black text-2xl italic">₺<span id="prodPrice${i}">0</span></span>
+                            <button onclick="siparis(${i})" class="bg-zinc-900 text-white px-6 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-emerald-600 transition">Sipariş Ver</button>
                         </div>
                     </div>
                 </div>`;
+            
+            // Editör Alanları
             editor.innerHTML += `
-                <div class="bg-zinc-800 p-3 rounded-lg border border-zinc-700 mb-2 text-xs">
-                    <span class="text-emerald-500 font-bold block mb-1 uppercase">Ürün ${i}</span>
-                    <input type="text" id="inputName${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-2 mb-2 rounded outline-none" placeholder="İsim">
-                    <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-2 rounded outline-none" placeholder="Fiyat">
+                <div class="bg-zinc-800 p-4 rounded-2xl border border-zinc-700 space-y-3">
+                    <span class="text-emerald-400 font-black text-[10px] uppercase">Ürün #${i} Ayarları</span>
+                    <input type="file" accept="image/*" onchange="changeImage(event, ${i})" class="w-full text-[10px] file:bg-emerald-600 file:text-white file:border-0 file:rounded-lg file:px-3 file:py-2 cursor-pointer">
+                    <input type="text" id="inputName${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="Ürün Adı">
+                    <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="Fiyat">
                 </div>`;
+        }
+
+        function changeImage(e, i) {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const data = event.target.result;
+                    document.getElementById(`prodImg${i}`).src = data;
+                    localStorage.setItem(`img_${i}`, data);
+                };
+                reader.readAsDataURL(file);
+            }
         }
 
         function siparis(i) {
             const isim = document.getElementById(`prodName${i}`).innerText;
             const fiyat = document.getElementById(`prodPrice${i}`).innerText;
-            const link = `https://api.whatsapp.com/send?phone=${NO}&text=Merhaba, *${isim}* ürünü için bilgi almak istiyorum. Fiyat: ${fiyat} TL.`;
-            window.open(link, '_blank');
+            window.open(`https://api.whatsapp.com/send?phone=${NO}&text=Merhaba Hüseyin Bey, *${isim}* ürünü hakkında bilgi almak istiyorum. Fiyat: ${fiyat} TL.`, '_blank');
         }
 
         function panelGiris() { if(prompt("Şifre:") === "nmkhasir") togglePanel(); }
@@ -149,14 +162,13 @@
         document.addEventListener('keydown', e => { if(e.ctrlKey && e.key.toLowerCase() === 'p') { e.preventDefault(); panelGiris(); } });
 
         window.onload = () => {
-            // Önce sayfanın başına git
-            window.scrollTo(0, 0);
-            
             for(let i=1; i<=8; i++) {
-                let n = localStorage.getItem(`n_${i}`) || "Premium Hasır";
+                let n = localStorage.getItem(`n_${i}`) || "Antrasit Hasır";
                 let p = localStorage.getItem(`p_${i}`) || "250,00";
+                let img = localStorage.getItem(`img_${i}`) || "antrasit.jpeg";
                 document.getElementById(`prodName${i}`).innerText = n;
                 document.getElementById(`prodPrice${i}`).innerText = p;
+                document.getElementById(`prodImg${i}`).src = img;
                 document.getElementById(`inputName${i}`).value = n;
                 document.getElementById(`inputPrice${i}`).value = p.replace(',00', '').replace(',', '.');
             }
