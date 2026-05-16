@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Panel kapalıyken tamamen görünmez yapıyoruz */
         .admin-gizli { display: none !important; }
     </style>
 </head>
@@ -18,22 +17,18 @@
             <h3 class="text-xl font-bold text-emerald-400"><i class="fa-solid fa-gear mr-2"></i>Gelişmiş Panel</h3>
             <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
         </div>
-        <p class="text-[10px] text-gray-400 mb-4 uppercase tracking-widest">Yönetici Modu Aktif</p>
+        <p class="text-[10px] text-gray-400 mb-4 uppercase tracking-widest font-bold text-center bg-zinc-800 py-1 rounded">Yönetici Modu</p>
         
         <div class="mb-6 bg-zinc-800 p-3 rounded-lg border border-zinc-700">
             <label class="block text-xs font-semibold mb-2 text-zinc-300">Tüm Fiyatları Değiştir (₺)</label>
             <div class="flex gap-2">
-                <input type="number" id="globalPriceInput" class="w-full px-3 py-1 bg-zinc-700 rounded text-white text-sm focus:outline-none" placeholder="Örn: 400">
+                <input type="number" id="globalPriceInput" class="w-full px-3 py-1 bg-zinc-700 rounded text-white text-sm focus:outline-none" placeholder="Örn: 450">
                 <button onclick="updateAllPrices()" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-1 rounded font-bold text-xs transition">Uygula</button>
             </div>
         </div>
 
-        <div class="space-y-4">
-            <h4 class="text-xs font-bold text-zinc-400 border-b border-zinc-700 pb-1 uppercase tracking-wider">Ürün İçeriklerini Düzenle</h4>
-            
-            <div id="productEditorFields">
-                </div>
-        </div>
+        <div class="space-y-4" id="productEditorFields">
+            </div>
         
         <button onclick="clearStorage()" class="w-full mt-6 bg-red-900/30 hover:bg-red-900/50 border border-red-700/50 text-red-400 text-xs py-2 rounded transition">
             Tüm Verileri Sıfırla
@@ -43,104 +38,107 @@
     <header class="bg-white shadow-sm sticky top-0 z-30">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-emerald-700 tracking-wide"><i class="fa-solid fa-leaf mr-2"></i>HASİRPLAST</a>
-            <nav class="hidden md:flex space-x-8 font-medium text-gray-600">
+            <nav class="hidden md:flex space-x-8 font-medium text-gray-600 text-sm">
                 <a href="#" class="hover:text-emerald-700 transition">Ana Sayfa</a>
                 <a href="#urunler" class="hover:text-emerald-700 transition">Ürünlerimiz</a>
-                <a href="#iletisim" class="hover:text-emerald-700 transition">İletişim</a>
+                <a href="#iletisim" class="hover:text-emerald-700 transition border-b-2 border-transparent hover:border-emerald-700">İletişim</a>
             </nav>
-            <a href="https://wa.me/905000000000" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-full font-semibold shadow-md transition">Teklif Al</a>
+            <a href="https://wa.me/905336586270" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-bold shadow-md transition text-sm">Teklif Al</a>
         </div>
     </header>
 
     <section class="relative block lg:flex bg-zinc-900 text-white min-h-[500px] items-center">
-        <div class="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center">
-            <span class="text-emerald-400 font-bold uppercase tracking-wider mb-2">Yeni Nesil Bahçe Mimarisi</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Doğanın Estetiği, Plastiğin Dayanıklılığı.</h1>
-            <p class="text-gray-300 text-lg mb-8 max-w-xl">Premium UV korumalı plastik hasır çitlerimiz ile alan yaratın.</p>
-            <div class="flex gap-4">
-                <a href="#urunler" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-bold shadow-lg transition text-center">Ürünleri İncele</a>
+        <div class="w-full lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center">
+            <span class="text-emerald-400 font-bold uppercase tracking-wider mb-2 text-sm">Doğrudan Üreticiden</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight italic">Dayanıklı Hasır Çözümleri.</h1>
+            <p class="text-gray-400 text-lg mb-8 max-w-xl">Cami, balkon ve bahçeleriniz için UV korumalı plastik hasırlar.</p>
+            <div>
+                <a href="#urunler" class="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-lg font-bold shadow-lg transition inline-block">Ürünleri Keşfet</a>
             </div>
         </div>
         <div class="w-full lg:w-1/2 min-h-[300px] lg:min-h-[500px]">
-            <img id="heroImg" src="antrasit.jpeg" alt="Ana Görsel" class="w-full h-full object-cover min-h-[300px] lg:min-h-[500px]">
+            <img id="heroImg" src="antrasit.jpeg" alt="Ana Görsel" class="w-full h-full object-cover">
         </div>
     </section>
 
     <section id="urunler" class="py-16 bg-zinc-100">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-zinc-900 mb-4 uppercase">Ürün Kataloğumuz</h2>
-                <p class="text-gray-500 text-sm">Kaliteli doku, uygun fiyat ve uzun ömürlü kullanım.</p>
+                <h2 class="text-3xl font-black text-zinc-900 mb-2 uppercase italic">Ürün Kataloğu</h2>
+                <div class="h-1 w-20 bg-emerald-600 mx-auto mb-4"></div>
             </div>
-            
-            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 </div>
         </div>
     </section>
 
-    <footer class="bg-zinc-900 text-gray-500 py-10 text-center text-sm">
-        <p onclick="panelGiris()" class="cursor-default select-none hover:text-zinc-700 transition">© 2026 HasırPlast. Tüm Hakları Saklıdır.</p>
+    <footer id="iletisim" class="bg-zinc-900 text-gray-500 py-12 text-center border-t border-zinc-800">
+        <div class="mb-6">
+            <p class="text-emerald-500 font-bold mb-2">İLETİŞİM HATTI</p>
+            <p class="text-white text-xl font-bold">+90 533 658 62 70</p>
+        </div>
+        <p onclick="panelGiris()" class="cursor-default select-none hover:text-zinc-700 transition text-xs opacity-50">© 2026 HasırPlast. Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <a href="https://wa.me/905000000000" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition z-50">
+    <a href="https://wa.me/905336586270" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition z-50">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script>
+        const WHATSAPP_NO = "905336586270";
         const defaultData = {
             prices: ["249,00", "259,00", "249,00", "239,00", "269,00", "279,00", "219,00", "229,00"],
-            names: ["Premium Antrasit v1", "Premium Antrasit v2", "Premium Antrasit v3", "Premium Antrasit v4", "Premium Antrasit v5", "Premium Antrasit v6", "Premium Antrasit v7", "Premium Antrasit v8"],
-            descs: ["%95 Gizlilik / Standart Örgü", "Ekstra Kalın Doku / Gölgelik", "Balkon Çiti Özel Serisi", "İnce Şerit / Dekoratif Profil", "Mat Yüzey / Parlama Yapmaz", "Çift Kat Örgülü Panel", "Ekonomik Rulo Seçeneği", "Rüzgar Geçirgen Gözenekli"],
+            names: ["Antrasit Hasır v1", "Antrasit Hasır v2", "Antrasit Hasır v3", "Antrasit Hasır v4", "Antrasit Hasır v5", "Antrasit Hasır v6", "Antrasit Hasır v7", "Antrasit Hasır v8"],
+            descs: ["%95 Gizlilik Oranı", "Ekstra Kalın Doku", "Balkon Özel Seri", "Dekoratif Profil", "Mat Yüzey", "Çift Kat Örgü", "Ekonomik Rulo", "Rüzgar Geçirgen"],
             images: Array(8).fill("antrasit.jpeg")
         };
 
-        // 1. ÜRÜNLERİ VE EDİTÖR ALANLARINI OLUŞTUR
         const productGrid = document.getElementById('productGrid');
         const productEditorFields = document.getElementById('productEditorFields');
 
         for(let i=1; i<=8; i++) {
-            // Kataloğa ürün kartlarını ekle
             productGrid.innerHTML += `
-                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
-                    <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-48 object-cover">
-                    <div class="p-4 flex-1 flex flex-col justify-between">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300">
+                    <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-52 object-cover">
+                    <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
-                            <h3 id="prodName${i}" class="font-bold text-lg mb-1 italic text-zinc-800">Yükleniyor...</h3>
-                            <p id="prodDesc${i}" class="text-gray-500 text-xs mb-3 font-medium">Yükleniyor...</p>
+                            <h3 id="prodName${i}" class="font-black text-lg mb-1 uppercase text-zinc-800">Yükleniyor...</h3>
+                            <p id="prodDesc${i}" class="text-gray-500 text-xs mb-4 font-medium italic">Yükleniyor...</p>
                         </div>
-                        <div class="flex justify-between items-center pt-2 border-t border-gray-100">
-                            <span class="text-emerald-700 font-bold text-base italic">₺<span id="prodPrice${i}">0</span></span>
-                            <a href="https://wa.me/905000000000" class="text-[10px] uppercase font-bold bg-zinc-900 text-white px-3 py-1.5 rounded hover:bg-emerald-600 transition">Sipariş</a>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-50">
+                            <span class="text-emerald-700 font-black text-xl italic leading-none">₺<span id="prodPrice${i}">0</span></span>
+                            <button onclick="siparisVer(${i})" class="text-[10px] uppercase font-black bg-zinc-900 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition shadow-sm">Sipariş</button>
                         </div>
                     </div>
                 </div>`;
 
-            // Panele düzenleme alanlarını ekle
             productEditorFields.innerHTML += `
                 <div class="bg-zinc-800 p-3 rounded-lg text-[11px] space-y-2 border border-zinc-700 mb-3">
                     <span class="font-bold text-emerald-400 block border-b border-zinc-700 pb-1">ÜRÜN ${i}</span>
                     <input type="file" accept="image/*" onchange="changeImage(event, ${i})" class="w-full text-zinc-500 file:mr-2 file:py-1 file:px-2 file:rounded file:bg-zinc-700 file:text-white file:border-0">
-                    <input type="text" id="inputName${i}" oninput="updateText(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded" placeholder="İsim">
+                    <input type="text" id="inputName${i}" oninput="updateText(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded" placeholder="Ürün İsmi">
                     <input type="text" id="inputDesc${i}" oninput="updateText(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded" placeholder="Açıklama">
                     <input type="number" id="inputPrice${i}" oninput="updateSinglePrice(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded" placeholder="Fiyat">
                 </div>`;
         }
 
-        // 2. PANEL GİRİŞ SİSTEMİ
+        function siparisVer(i) {
+            const isim = document.getElementById(`prodName${i}`).innerText;
+            const fiyat = document.getElementById(`prodPrice${i}`).innerText;
+            const mesaj = encodeURIComponent(`Merhaba HasırPlast, *${isim}* ürününüz hakkında bilgi almak istiyorum. Güncel fiyat: ${fiyat} TL`);
+            window.open(`https://wa.me/${WHATSAPP_NO}?text=${mesaj}`, '_blank');
+        }
+
         function panelGiris() {
-            let sifre = prompt("Güvenli Giriş:");
-            if (sifre === "nmkhasir") {
-                togglePanel();
-            } else if (sifre !== null) {
-                alert("Hatalı Şifre!");
-            }
+            let sifre = prompt("Admin Şifresi:");
+            if (sifre === "nmkhasir") { togglePanel(); }
+            else if (sifre !== null) { alert("Hatalı!"); }
         }
 
         function togglePanel() {
             document.getElementById('adminPanel').classList.toggle('admin-gizli');
         }
 
-        // CTRL + P Kombinasyonu
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && e.key.toLowerCase() === 'p') {
                 e.preventDefault();
@@ -148,7 +146,6 @@
             }
         });
 
-        // 3. VERİLERİ YÜKLE VE KAYDET
         window.onload = function() {
             for(let i=1; i<=8; i++) {
                 let name = localStorage.getItem(`prodName_${i}`) || defaultData.names[i-1];
@@ -209,10 +206,8 @@
         }
 
         function clearStorage() {
-            if(confirm("Tüm değişiklikler silinsin mi?")) {
-                localStorage.clear();
-                window.location.reload();
-            }
+            if(confirm("Sıfırlansın mı?")) { localStorage.clear(); window.location.reload(); }
         }
     </script>
 </body>
+</html>
