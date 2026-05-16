@@ -9,14 +9,39 @@
     <style>
         .admin-gizli { display: none !important; }
         .map-container iframe { width: 100%; height: 300px; border-radius: 1rem; }
+        
+        /* Giriş Ekranı Animasyonu */
+        #intro-screen {
+            transition: transform 0.8s cubic-bezier(0.87, 0, 0.13, 1);
+        }
+        .intro-hidden {
+            transform: translateY(-100%);
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans overflow-hidden" id="main-body">
+
+    <div id="intro-screen" class="fixed inset-0 z-[100] bg-zinc-900 flex flex-col items-center justify-center text-center p-6">
+        <div class="max-w-3xl">
+            <i class="fa-solid fa-leaf text-emerald-500 text-6xl mb-6"></i>
+            <h1 class="text-5xl md:text-7xl font-black text-white italic tracking-tighter mb-4">HASİRPLAST</h1>
+            <p class="text-zinc-400 text-lg md:text-xl mb-10 font-light leading-relaxed">
+                Hüseyin Hasırcı güvencesiyle; cami, bahçe ve dekorasyon projeleriniz için <br class="hidden md:block"> 
+                <span class="text-emerald-400 font-bold italic underline">yüksek kaliteli plastik hasır</span> çözümleri.
+            </p>
+            <button onclick="siteyeGirisYap()" class="group relative px-12 py-5 bg-emerald-600 text-white font-black rounded-full overflow-hidden shadow-2xl transition-all hover:scale-105 active:scale-95 uppercase tracking-widest text-sm">
+                <span class="relative z-10 flex items-center gap-3">
+                    Ürünleri Gör <i class="fa-solid fa-arrow-right animate-pulse"></i>
+                </span>
+                <div class="absolute inset-0 bg-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            </button>
+        </div>
+    </div>
 
     <div id="adminPanel" class="fixed inset-y-0 left-0 w-80 bg-zinc-900 text-white p-6 shadow-2xl z-50 overflow-y-auto admin-gizli border-r border-emerald-500/30">
         <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-bold text-emerald-400 italic">YÖNETİM</h3>
-            <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-3xl">&times;</button>
+            <h3 class="text-xl font-bold text-emerald-400 italic uppercase">YÖNETİM</h3>
+            <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-3xl">×</button>
         </div>
         <div id="productEditorFields" class="space-y-4"></div>
         <button onclick="localStorage.clear(); location.reload();" class="w-full mt-8 bg-red-900/20 text-red-500 text-[10px] font-bold py-3 rounded border border-red-800/30 uppercase">Sıfırla</button>
@@ -34,7 +59,7 @@
         </div>
     </nav>
 
-    <section class="py-12 px-4 bg-zinc-100">
+    <section class="py-12 px-4 bg-zinc-100 min-h-screen">
         <div class="container mx-auto">
             <h2 class="text-3xl font-black mb-8 italic uppercase border-l-4 border-emerald-600 pl-4 text-zinc-900">Ürün Kataloğu</h2>
             <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
@@ -44,7 +69,7 @@
     <section id="iletisim" class="py-16 bg-white px-4 border-t">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl font-black mb-6 italic uppercase">İletişim & Adres</h2>
+                <h2 class="text-3xl font-black mb-6 italic uppercase text-zinc-900">İletişim & Adres</h2>
                 <div class="space-y-6">
                     <div class="flex items-start">
                         <i class="fa-solid fa-location-dot text-emerald-600 text-2xl mt-1 mr-4"></i>
@@ -57,13 +82,13 @@
                 </div>
             </div>
             <div class="map-container shadow-2xl">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.689717540248!2d28.828859712398462!3d41.03199851780447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa50367f082e1%3A0x67396117366d0342!2zSW7bsO8LCAzNTkuIFNrLiwgMzQyMDMgQmHEn2PEsWxhci_EsHN0YW5idWw!5e0!3m2!1str!2str!4v1715890000000!5m2!1str!2str" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.6457140356545!2d28.835!3d41.035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa4479e000001%3A0x1234567890abcdef!2zQmHEn2P谋bGFyL8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
     <footer class="bg-zinc-900 text-gray-500 py-10 text-center border-t border-zinc-800">
-        <p onclick="panelGiris()" class="text-[10px] uppercase font-bold cursor-default select-none opacity-40">© 2026 HasırPlast - Bağcılar / İstanbul</p>
+        <p onclick="panelGiris()" class="text-[10px] uppercase font-bold cursor-default select-none opacity-40">© 2026 HasırPlast - Hüseyin Hasırcı - Bağcılar / İstanbul</p>
     </footer>
 
     <a href="https://api.whatsapp.com/send?phone=905336586270" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-2xl z-50 hover:scale-110 transition">
@@ -75,16 +100,32 @@
         const grid = document.getElementById('productGrid');
         const editor = document.getElementById('productEditorFields');
 
-        // Üretim
+        // Giriş Ekranı Fonksiyonu
+        function siteyeGirisYap() {
+            const intro = document.getElementById('intro-screen');
+            const body = document.getElementById('main-body');
+            
+            intro.classList.add('intro-hidden');
+            body.classList.remove('overflow-hidden');
+            
+            // Animasyon bitince ekranı tamamen kaldır (etkileşimi engellememesi için)
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 800);
+        }
+
+        // Ürün Üretimi
         for(let i=1; i<=8; i++) {
             grid.innerHTML += `
-                <div class="bg-white rounded-2xl shadow-sm border overflow-hidden flex flex-col hover:shadow-lg transition">
-                    <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-48 object-cover">
+                <div class="bg-white rounded-2xl shadow-sm border overflow-hidden flex flex-col hover:shadow-lg transition group">
+                    <div class="overflow-hidden h-48">
+                        <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
                     <div class="p-5 flex-1 flex flex-col justify-between">
                         <h3 id="prodName${i}" class="font-black text-lg uppercase italic text-zinc-800">Ürün ${i}</h3>
                         <div class="flex justify-between items-center mt-4 border-t pt-3">
                             <span class="text-emerald-700 font-black text-xl italic">₺<span id="prodPrice${i}">0</span></span>
-                            <button onclick="siparis(${i})" class="bg-zinc-900 text-white px-4 py-2 rounded-lg font-black text-[10px] uppercase transition">Sipariş</button>
+                            <button onclick="siparis(${i})" class="bg-zinc-900 text-white px-4 py-2 rounded-lg font-black text-[10px] uppercase transition hover:bg-emerald-600">Sipariş</button>
                         </div>
                     </div>
                 </div>`;
@@ -108,6 +149,9 @@
         document.addEventListener('keydown', e => { if(e.ctrlKey && e.key.toLowerCase() === 'p') { e.preventDefault(); panelGiris(); } });
 
         window.onload = () => {
+            // Önce sayfanın başına git
+            window.scrollTo(0, 0);
+            
             for(let i=1; i<=8; i++) {
                 let n = localStorage.getItem(`n_${i}`) || "Premium Hasır";
                 let p = localStorage.getItem(`p_${i}`) || "250,00";
