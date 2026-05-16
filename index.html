@@ -4,72 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HasırPlast | Yapay Hasır ve Bahçe Çit Sistemleri</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Panel kapalıyken tamamen görünmez yapıyoruz */
+        .admin-gizli { display: none !important; }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- KALICI YÖNETİM PANELİ -->
-    <div id="adminPanel" class="fixed inset-y-0 left-0 w-85 bg-zinc-900 text-white p-6 shadow-2xl transform -translate-x-full transition-transform duration-300 z-50 overflow-y-auto">
+    <div id="adminPanel" class="fixed inset-y-0 left-0 w-85 bg-zinc-900 text-white p-6 shadow-2xl z-50 overflow-y-auto admin-gizli border-r border-emerald-500/30">
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-xl font-bold text-emerald-400"><i class="fa-solid fa-gear mr-2"></i>Gelişmiş Panel</h3>
-            <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-xl">&times;</button>
+            <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
         </div>
-        <p class="text-xs text-gray-400 mb-4">Yaptığın tüm değişiklikler bu bilgisayarda kalıcı olarak saklanır.</p>
+        <p class="text-[10px] text-gray-400 mb-4 uppercase tracking-widest">Yönetici Modu Aktif</p>
         
-        <!-- Toplu Fiyat Ayarı -->
         <div class="mb-6 bg-zinc-800 p-3 rounded-lg border border-zinc-700">
             <label class="block text-xs font-semibold mb-2 text-zinc-300">Tüm Fiyatları Değiştir (₺)</label>
             <div class="flex gap-2">
                 <input type="number" id="globalPriceInput" class="w-full px-3 py-1 bg-zinc-700 rounded text-white text-sm focus:outline-none" placeholder="Örn: 400">
-                <button onclick="updateAllPrices()" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-1 rounded font-bold text-xs">Uygula</button>
+                <button onclick="updateAllPrices()" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-1 rounded font-bold text-xs transition">Uygula</button>
             </div>
         </div>
 
-        <!-- Ürün Düzenleme Alanı -->
         <div class="space-y-4">
             <h4 class="text-xs font-bold text-zinc-400 border-b border-zinc-700 pb-1 uppercase tracking-wider">Ürün İçeriklerini Düzenle</h4>
             
-            <!-- 8 Ürün için Giriş Alanları -->
-            <script>
-                for(let i=1; i<=8; i++) {
-                    document.write(`
-                        <div class="bg-zinc-800 p-3 rounded-lg text-xs space-y-2 border border-zinc-700">
-                            <span class="font-bold text-emerald-400 block border-b border-zinc-700 pb-1">ÜRÜN ${i}</span>
-                            <div>
-                                <label class="text-gray-400 block mb-1">Görsel Değiştir:</label>
-                                <input type="file" accept="image/*" onchange="changeImage(event, ${i})" class="w-full text-gray-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-zinc-700 file:text-white cursor-pointer">
-                            </div>
-                            <div>
-                                <label class="text-gray-400 block mb-1">Ürün Adı:</label>
-                                <input type="text" id="inputName${i}" oninput="updateText(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded text-white focus:outline-none" placeholder="Ürün İsmi">
-                            </div>
-                            <div>
-                                <label class="text-gray-400 block mb-1">Açıklama:</label>
-                                <input type="text" id="inputDesc${i}" oninput="updateText(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded text-white focus:outline-none" placeholder="Kısa açıklama yazısı">
-                            </div>
-                            <div>
-                                <label class="text-gray-400 block mb-1">Fiyat (₺):</label>
-                                <input type="number" id="inputPrice${i}" oninput="updateSinglePrice(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded text-white focus:outline-none" placeholder="249">
-                            </div>
-                        </div>
-                    `);
-                }
-            </script>
+            <div id="productEditorFields">
+                </div>
         </div>
         
-        <!-- Sıfırlama Butonu -->
-        <button onclick="clearStorage()" class="w-full mt-6 bg-red-900/50 hover:bg-red-900 border border-red-700 text-white text-xs py-2 rounded transition">
-            Fabrika Ayarlarına Dön (Sıfırla)
+        <button onclick="clearStorage()" class="w-full mt-6 bg-red-900/30 hover:bg-red-900/50 border border-red-700/50 text-red-400 text-xs py-2 rounded transition">
+            Tüm Verileri Sıfırla
         </button>
     </div>
 
-    <!-- PANEL AÇMA BUTONU -->
-    <button onclick="togglePanel()" class="fixed left-0 top-1/2 transform -translate-y-1/2 bg-zinc-900 text-emerald-400 p-3 rounded-r-xl shadow-lg z-40 hover:bg-zinc-800 transition">
-        <i class="fa-solid fa-sliders text-xl"></i>
-    </button>
-
-    <!-- HEADER & NAV -->
     <header class="bg-white shadow-sm sticky top-0 z-30">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-emerald-700 tracking-wide"><i class="fa-solid fa-leaf mr-2"></i>HASİRPLAST</a>
@@ -78,18 +48,17 @@
                 <a href="#urunler" class="hover:text-emerald-700 transition">Ürünlerimiz</a>
                 <a href="#iletisim" class="hover:text-emerald-700 transition">İletişim</a>
             </nav>
-            <a href="#iletisim" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-full font-semibold shadow-md transition">Teklif Al</a>
+            <a href="https://wa.me/905000000000" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-full font-semibold shadow-md transition">Teklif Al</a>
         </div>
     </header>
 
-    <!-- HERO BÖLÜMÜ -->
-    <section class="relative bg-gradient-to-r block lg:flex bg-zinc-900 text-white min-h-[500px] items-center">
+    <section class="relative block lg:flex bg-zinc-900 text-white min-h-[500px] items-center">
         <div class="w-full lg:w-1/2 p-12 lg:p-24 flex flex-col justify-center">
             <span class="text-emerald-400 font-bold uppercase tracking-wider mb-2">Yeni Nesil Bahçe Mimarisi</span>
             <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Doğanın Estetiği, Plastiğin Dayanıklılığı.</h1>
             <p class="text-gray-300 text-lg mb-8 max-w-xl">Premium UV korumalı plastik hasır çitlerimiz ile alan yaratın.</p>
             <div class="flex gap-4">
-                <a href="#urunler" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-bold shadow-lg transition">Ürünleri İncele</a>
+                <a href="#urunler" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-bold shadow-lg transition text-center">Ürünleri İncele</a>
             </div>
         </div>
         <div class="w-full lg:w-1/2 min-h-[300px] lg:min-h-[500px]">
@@ -97,51 +66,27 @@
         </div>
     </section>
 
-    <!-- ÜRÜNLER KATALOĞU (8 ÜRÜN) -->
     <section id="urunler" class="py-16 bg-zinc-100">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-zinc-900 mb-4">Antrasit Hasır Kataloğumuz</h2>
-                <p class="text-gray-600">Soldaki <i class="fa-solid fa-sliders"></i> ikonuna tıklayarak veya <b class="text-emerald-700">P</b> tuşuna basarak her ürünün <b>resmini, ismini, açıklamasını ve fiyatını</b> değiştirebilirsiniz.</p>
+                <h2 class="text-3xl font-bold text-zinc-900 mb-4 uppercase">Ürün Kataloğumuz</h2>
+                <p class="text-gray-500 text-sm">Kaliteli doku, uygun fiyat ve uzun ömürlü kullanım.</p>
             </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <script>
-                    for(let i=1; i<=8; i++) {
-                        document.write(`
-                            <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between">
-                                <img id="prodImg${i}" src="antrasit.jpeg" alt="Ürün ${i}" class="w-full h-48 object-cover">
-                                <div class="p-4 flex-1 flex flex-col justify-between">
-                                    <div>
-                                        <h3 id="prodName${i}" class="font-bold text-lg mb-1">Yükleniyor...</h3>
-                                        <p id="prodDesc${i}" class="text-gray-500 text-xs mb-3">Yükleniyor...</p>
-                                    </div>
-                                    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
-                                        <span class="text-emerald-700 font-bold text-base">₺<span id="prodPrice${i}">249,00</span> <span class="text-xs text-gray-400">/ m²</span></span>
-                                        <a href="#iletisim" class="text-xs bg-zinc-900 text-white px-3 py-1.5 rounded hover:bg-emerald-600 transition">Seç</a>
-                                    </div>
-                                </div>
-                            </div>
-                        `);
-                    }
-                </script>
-            </div>
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-zinc-900 text-gray-400 py-6 text-center text-sm">
-        <p>&copy; 2026 HasırPlast. Tüm Hakları Saklıdır.</p>
+    <footer class="bg-zinc-900 text-gray-500 py-10 text-center text-sm">
+        <p onclick="panelGiris()" class="cursor-default select-none hover:text-zinc-700 transition">© 2026 HasırPlast. Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <!-- SABİT WHATSAPP BUTONU -->
     <a href="https://wa.me/905000000000" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition z-50">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- SİHİRLİ PANEL KONTROL SCRIPT'LERİ -->
     <script>
-        // Varsayılan İçerikler
         const defaultData = {
             prices: ["249,00", "259,00", "249,00", "239,00", "269,00", "279,00", "219,00", "229,00"],
             names: ["Premium Antrasit v1", "Premium Antrasit v2", "Premium Antrasit v3", "Premium Antrasit v4", "Premium Antrasit v5", "Premium Antrasit v6", "Premium Antrasit v7", "Premium Antrasit v8"],
@@ -149,92 +94,122 @@
             images: Array(8).fill("antrasit.jpeg")
         };
 
-        // Panel Aç/Kapat
-        function togglePanel() {
-            document.getElementById('adminPanel').classList.toggle('-translate-x-full');
-        }
-        document.addEventListener('keydown', e => { if (e.key === 'p' || e.key === 'P') togglePanel(); });
+        // 1. ÜRÜNLERİ VE EDİTÖR ALANLARINI OLUŞTUR
+        const productGrid = document.getElementById('productGrid');
+        const productEditorFields = document.getElementById('productEditorFields');
 
-        // Sayfa İlk Açıldığında Verileri Yükle
+        for(let i=1; i<=8; i++) {
+            // Kataloğa ürün kartlarını ekle
+            productGrid.innerHTML += `
+                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
+                    <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-48 object-cover">
+                    <div class="p-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 id="prodName${i}" class="font-bold text-lg mb-1 italic text-zinc-800">Yükleniyor...</h3>
+                            <p id="prodDesc${i}" class="text-gray-500 text-xs mb-3 font-medium">Yükleniyor...</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                            <span class="text-emerald-700 font-bold text-base italic">₺<span id="prodPrice${i}">0</span></span>
+                            <a href="https://wa.me/905000000000" class="text-[10px] uppercase font-bold bg-zinc-900 text-white px-3 py-1.5 rounded hover:bg-emerald-600 transition">Sipariş</a>
+                        </div>
+                    </div>
+                </div>`;
+
+            // Panele düzenleme alanlarını ekle
+            productEditorFields.innerHTML += `
+                <div class="bg-zinc-800 p-3 rounded-lg text-[11px] space-y-2 border border-zinc-700 mb-3">
+                    <span class="font-bold text-emerald-400 block border-b border-zinc-700 pb-1">ÜRÜN ${i}</span>
+                    <input type="file" accept="image/*" onchange="changeImage(event, ${i})" class="w-full text-zinc-500 file:mr-2 file:py-1 file:px-2 file:rounded file:bg-zinc-700 file:text-white file:border-0">
+                    <input type="text" id="inputName${i}" oninput="updateText(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded" placeholder="İsim">
+                    <input type="text" id="inputDesc${i}" oninput="updateText(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded" placeholder="Açıklama">
+                    <input type="number" id="inputPrice${i}" oninput="updateSinglePrice(${i})" class="w-full px-2 py-1 bg-zinc-700 rounded" placeholder="Fiyat">
+                </div>`;
+        }
+
+        // 2. PANEL GİRİŞ SİSTEMİ
+        function panelGiris() {
+            let sifre = prompt("Güvenli Giriş:");
+            if (sifre === "nmkhasir") {
+                togglePanel();
+            } else if (sifre !== null) {
+                alert("Hatalı Şifre!");
+            }
+        }
+
+        function togglePanel() {
+            document.getElementById('adminPanel').classList.toggle('admin-gizli');
+        }
+
+        // CTRL + P Kombinasyonu
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key.toLowerCase() === 'p') {
+                e.preventDefault();
+                panelGiris();
+            }
+        });
+
+        // 3. VERİLERİ YÜKLE VE KAYDET
         window.onload = function() {
             for(let i=1; i<=8; i++) {
-                // Hafızadan çek, yoksa varsayılanı kullan
                 let name = localStorage.getItem(`prodName_${i}`) || defaultData.names[i-1];
                 let desc = localStorage.getItem(`prodDesc_${i}`) || defaultData.descs[i-1];
                 let price = localStorage.getItem(`prodPrice_${i}`) || defaultData.prices[i-1];
-                let img = localStorage.getItem(`prodImg_${i}`) || (i === 1 ? 'antrasit.jpeg' : `antrasit${i}.jpeg`);
+                let img = localStorage.getItem(`prodImg_${i}`) || 'antrasit.jpeg';
 
-                // Sitedeki Alanları Güncelle
                 document.getElementById(`prodName${i}`).innerText = name;
                 document.getElementById(`prodDesc${i}`).innerText = desc;
                 document.getElementById(`prodPrice${i}`).innerText = price;
                 document.getElementById(`prodImg${i}`).src = img;
                 if(i===1) document.getElementById('heroImg').src = img;
 
-                // Paneldeki Girdileri Doldur
                 document.getElementById(`inputName${i}`).value = name;
                 document.getElementById(`inputDesc${i}`).value = desc;
-                document.getElementById(`inputPrice${i}`).value = price.replace(',00', '');
+                document.getElementById(`inputPrice${i}`).value = price.replace(',00', '').replace(',', '.');
             }
         };
 
-        // Panelden Yazı Değişince Canlı Güncelle ve Kaydet
         function updateText(i) {
-            let newName = document.getElementById(`inputName${i}`).value;
-            let newDesc = document.getElementById(`inputDesc${i}`).value;
-            
-            document.getElementById(`prodName${i}`).innerText = newName;
-            document.getElementById(`prodDesc${i}`).innerText = newDesc;
-            
-            localStorage.setItem(`prodName_${i}`, newName);
-            localStorage.setItem(`prodDesc_${i}`, newDesc);
+            let name = document.getElementById(`inputName${i}`).value;
+            let desc = document.getElementById(`inputDesc${i}`).value;
+            document.getElementById(`prodName${i}`).innerText = name;
+            document.getElementById(`prodDesc${i}`).innerText = desc;
+            localStorage.setItem(`prodName_${i}`, name);
+            localStorage.setItem(`prodDesc_${i}`, desc);
         }
 
-        // Tekli Fiyat Güncelleme
         function updateSinglePrice(i) {
-            let priceVal = document.getElementById(`inputPrice${i}`).value;
-            if(!priceVal) priceVal = "0";
-            let formattedPrice = parseFloat(priceVal).toFixed(2).replace('.', ',');
-            document.getElementById(`prodPrice${i}`).innerText = formattedPrice;
-            localStorage.setItem(`prodPrice_${i}`, formattedPrice);
+            let val = document.getElementById(`inputPrice${i}`).value || "0";
+            let formatted = parseFloat(val).toFixed(2).replace('.', ',');
+            document.getElementById(`prodPrice${i}`).innerText = formatted;
+            localStorage.setItem(`prodPrice_${i}`, formatted);
         }
 
-        // Toplu Fiyat Güncelleme
         function updateAllPrices() {
-            let globalPrice = document.getElementById('globalPriceInput').value;
-            if(!globalPrice) return alert("Lütfen fiyat girin!");
-            let formatted = parseFloat(globalPrice).toFixed(2).replace('.', ',');
-            
+            let val = document.getElementById('globalPriceInput').value;
+            if(!val) return;
+            let formatted = parseFloat(val).toFixed(2).replace('.', ',');
             for(let i=1; i<=8; i++) {
                 document.getElementById(`prodPrice${i}`).innerText = formatted;
-                document.getElementById(`inputPrice${i}`).value = globalPrice;
+                document.getElementById(`inputPrice${i}`).value = val;
                 localStorage.setItem(`prodPrice_${i}`, formatted);
             }
         }
 
-        // Görsel Değiştirme ve Kaydetme
         function changeImage(event, i) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = e => {
                     document.getElementById(`prodImg${i}`).src = e.target.result;
-                    if(i === 1) document.getElementById('heroImg').src = e.target.result;
-                    
-                    // Görseli hafızaya kaydet
-                    try {
-                        localStorage.setItem(`prodImg_${i}`, e.target.result);
-                    } catch (error) {
-                        alert("Görsel boyutu çok büyük olduğu için tarayıcı hafızasına kaydedilemedi ama şu an canlı olarak görebilirsiniz. (Daha küçük boyutlu resimler kalıcı kaydedilebilir).");
-                    }
-                }
+                    if(i===1) document.getElementById('heroImg').src = e.target.result;
+                    try { localStorage.setItem(`prodImg_${i}`, e.target.result); } catch(e) {}
+                };
                 reader.readAsDataURL(file);
             }
         }
 
-        // Her Şeyi Sıfırla
         function clearStorage() {
-            if(confirm("Tüm değişiklikleri silip ilk haline döndürmek istediğinize emin misiniz?")) {
+            if(confirm("Tüm değişiklikler silinsin mi?")) {
                 localStorage.clear();
                 window.location.reload();
             }
