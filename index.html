@@ -9,12 +9,9 @@
     <style>
         .admin-gizli, .modal-gizli { display: none !important; }
         html { scroll-behavior: smooth; }
-        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)); }
         #sepetSidebar { transition: transform 0.3s ease-in-out; }
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         input[type=number] { -moz-appearance: textfield; }
-        
-        /* Panel için kaydırma çubuğu tasarımı */
         #adminPanel::-webkit-scrollbar { width: 4px; }
         #adminPanel::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
     </style>
@@ -27,10 +24,9 @@
             <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-3xl">×</button>
         </div>
         
-        <div id="productEditorFields" class="space-y-8">
-            </div>
+        <div id="productEditorFields" class="space-y-8"></div>
 
-        <button onclick="localStorage.clear(); location.reload();" class="w-full mt-12 bg-red-900/20 text-red-500 text-[10px] font-bold py-4 rounded-xl border border-red-800/30 uppercase tracking-widest hover:bg-red-900/40 transition">Tüm Verileri Sıfırla</button>
+        <button onclick="localStorage.clear(); location.reload();" class="w-full mt-12 bg-red-900/20 text-red-500 text-[10px] font-bold py-4 rounded-xl border border-red-800/30 uppercase tracking-widest hover:bg-red-900/40 transition">Verileri Sıfırla</button>
     </div>
 
     <div id="sepetOverlay" onclick="toggleSepet()" class="fixed inset-0 bg-black/50 z-[100] hidden backdrop-blur-sm"></div>
@@ -45,7 +41,7 @@
                 <span class="font-bold text-zinc-500 uppercase text-xs tracking-widest">GENEL TOPLAM:</span>
                 <span id="sepetToplam" class="text-3xl font-black text-emerald-700 italic">₺0,00</span>
             </div>
-            <button onclick="whatsappSepetGonder()" class="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs shadow-lg hover:bg-emerald-500 transition active:scale-95">SİPARİŞİ WHATSAPP'A AKTAR</button>
+            <button onclick="whatsappSepetGonder()" class="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs shadow-lg hover:bg-emerald-500 transition">WHATSAPP'A AKTAR</button>
         </div>
     </div>
 
@@ -53,17 +49,14 @@
         <div class="bg-white w-full max-w-4xl rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row relative">
             <button onclick="toggleModal()" class="absolute top-4 right-6 text-3xl font-bold text-zinc-400 hover:text-zinc-900 z-10">×</button>
             <div class="md:w-1/2 bg-zinc-100 h-64 md:h-auto">
-                <img id="modalImg" src="antrasit.jpeg" class="w-full h-full object-cover">
+                <img id="modalImg" src="" class="w-full h-full object-cover">
             </div>
             <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                <span class="text-emerald-600 font-bold uppercase tracking-[0.2em] text-[10px] mb-2 italic">Toptan Ürün Detayı</span>
-                <h2 id="modalTitle" class="text-4xl font-black italic uppercase text-zinc-900 mb-2 tracking-tighter">Ürün Adı</h2>
-                <span id="modalBagPriceDisplay" class="text-2xl font-black text-emerald-700 italic mb-4 block">₺400,00</span>
-                <p id="modalDesc" class="text-zinc-500 mb-8 leading-relaxed italic">Ürün açıklaması buraya gelecek.</p>
-                <div class="flex justify-between items-center border-t border-zinc-100 pt-8">
-                    <span class="text-zinc-400 font-bold uppercase text-[10px] tracking-widest">Bağlar 25 Adettir</span>
-                    <button id="modalAddBtn" class="bg-zinc-900 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-emerald-600 transition shadow-xl active:scale-90">Sepete Ekle</button>
-                </div>
+                <span class="text-emerald-600 font-bold uppercase tracking-[0.2em] text-[10px] mb-2 italic">Toptan Satış</span>
+                <h2 id="modalTitle" class="text-4xl font-black italic uppercase text-zinc-900 mb-2 tracking-tighter"></h2>
+                <span id="modalBagPriceDisplay" class="text-2xl font-black text-emerald-700 italic mb-4 block"></span>
+                <p id="modalDesc" class="text-zinc-500 mb-8 leading-relaxed italic"></p>
+                <button id="modalAddBtn" class="bg-zinc-900 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-emerald-600 transition shadow-xl">Sepete Ekle</button>
             </div>
         </div>
     </div>
@@ -73,74 +66,99 @@
             <a href="#" class="text-2xl font-black text-emerald-700 italic tracking-tighter">HASİRPLAST</a>
             <button onclick="toggleSepet()" class="relative group p-2">
                 <i class="fa-solid fa-cart-shopping text-zinc-800 text-2xl group-hover:text-emerald-600 transition"></i>
-                <span id="sepetAdet" class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                <span id="sepetAdet" class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
             </button>
         </div>
     </nav>
 
-    <section id="katalog" class="py-24 px-4 bg-white">
+    <section class="py-24 px-4 bg-white">
         <div class="container mx-auto">
-            <div class="mb-16 border-l-8 border-emerald-600 pl-6">
-                <h2 class="text-5xl md:text-6xl font-black italic uppercase text-zinc-900 tracking-tighter">KOLEKSİYON</h2>
-                <p class="text-zinc-400 italic mt-2 font-bold uppercase text-[10px] tracking-widest">SATIŞLAR 25 ADETLİK BAĞLAR HALİNDEDİR.</p>
-            </div>
-            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                </div>
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"></div>
         </div>
     </section>
 
     <footer class="bg-zinc-900 text-white py-14 text-center">
-        <p onclick="panelGiris()" class="text-[11px] uppercase font-bold cursor-pointer opacity-30 hover:opacity-100 tracking-widest italic">© 2026 HASİRPLAST - YÖNETİCİ GİRİŞİ</p>
+        <p onclick="panelGiris()" class="text-[11px] uppercase font-bold cursor-pointer opacity-30 hover:opacity-100 italic tracking-widest">© 2026 HASİRPLAST</p>
     </footer>
 
     <script>
         const NO = "905336586270";
-        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v8')) || [];
+        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v9')) || [];
 
         const grid = document.getElementById('productGrid');
         const editor = document.getElementById('productEditorFields');
 
-        // Ürünleri ve Paneli Oluşturma
         for(let i=1; i<=8; i++) {
             grid.innerHTML += `
                 <div onclick="openProduct(${i})" class="bg-white rounded-[2.5rem] shadow-xl border border-gray-100 overflow-hidden flex flex-col hover:-translate-y-3 transition duration-500 cursor-pointer group">
                     <div class="h-80 overflow-hidden bg-zinc-200 relative">
                         <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-6 left-6 bg-emerald-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase italic tracking-tighter shadow-lg">25 ADET (1 BAĞ)</div>
+                        <div class="absolute bottom-6 left-6 bg-emerald-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase italic tracking-tighter">25 ADET (1 BAĞ)</div>
                     </div>
                     <div class="p-8 flex flex-col items-center text-center">
                         <h3 id="prodName${i}" class="font-black text-lg uppercase italic text-zinc-800 tracking-tighter mb-2">Ürün ${i}</h3>
                         <span class="text-emerald-700 font-black text-2xl italic">₺<span id="prodPriceDisplay${i}">400,00</span></span>
-                        <div class="mt-4 text-[10px] text-zinc-300 font-bold uppercase tracking-tighter italic">DETAYLAR İÇİN TIKLAYIN</div>
                     </div>
                 </div>`;
             
             editor.innerHTML += `
                 <div class="bg-zinc-800/50 p-6 rounded-[2rem] border border-zinc-700 space-y-4">
-                    <span class="text-emerald-400 font-black text-[10px] uppercase italic tracking-widest">ÜRÜN #${i} AYARLARI</span>
+                    <span class="text-emerald-400 font-black text-[10px] uppercase italic">ÜRÜN #${i}</span>
                     
                     <div class="space-y-1">
+                        <label class="text-[9px] text-zinc-500 font-bold uppercase ml-1">Ürün Görseli</label>
+                        <input type="file" accept="image/*" onchange="changeImage(event, ${i})" class="w-full text-[10px] file:bg-emerald-600 file:text-white file:border-0 file:rounded-lg file:px-3 file:py-1 file:mr-3 cursor-pointer">
+                    </div>
+
+                    <div class="space-y-1">
                         <label class="text-[9px] text-zinc-500 font-bold uppercase ml-1">Ürün Adı</label>
-                        <input type="text" id="inputName${i}" oninput="update(${i})" class="w-full bg-zinc-900 border border-zinc-700 p-3 rounded-xl outline-none text-sm focus:border-emerald-500 transition" placeholder="Örn: Antrasit Hasır">
+                        <input type="text" id="inputName${i}" oninput="update(${i})" class="w-full bg-zinc-900 border border-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="Ürün Adı">
                     </div>
 
                     <div class="space-y-1">
-                        <label class="text-[9px] text-zinc-500 font-bold uppercase ml-1">Bağ Fiyatı (₺)</label>
-                        <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-900 border border-zinc-700 p-3 rounded-xl outline-none text-sm focus:border-emerald-500 transition" placeholder="Örn: 400">
+                        <label class="text-[9px] text-zinc-500 font-bold uppercase ml-1">Fiyat (400 gibi girin)</label>
+                        <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-900 border border-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="400">
                     </div>
 
                     <div class="space-y-1">
-                        <label class="text-[9px] text-zinc-500 font-bold uppercase ml-1">Ürün Açıklaması</label>
-                        <textarea id="inputDesc${i}" oninput="update(${i})" class="w-full bg-zinc-900 border border-zinc-700 p-3 rounded-xl outline-none text-sm h-24 focus:border-emerald-500 transition resize-none" placeholder="Ürün özelliklerini yazın..."></textarea>
+                        <label class="text-[9px] text-zinc-500 font-bold uppercase ml-1">Açıklama</label>
+                        <textarea id="inputDesc${i}" oninput="update(${i})" class="w-full bg-zinc-900 border border-zinc-700 p-3 rounded-xl outline-none text-sm h-20 resize-none" placeholder="Açıklama..."></textarea>
                     </div>
                 </div>`;
+        }
+
+        function changeImage(e, i) {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    const base64Image = ev.target.result;
+                    document.getElementById(`prodImg${i}`).src = base64Image;
+                    localStorage.setItem(`img_${i}`, base64Image);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function update(i) {
+            let n = document.getElementById(`inputName${i}`).value;
+            let p = document.getElementById(`inputPrice${i}`).value;
+            let d = document.getElementById(`inputDesc${i}`).value;
+            let formatliFiyat = parseFloat(p || 0).toFixed(2).replace('.', ',');
+            
+            document.getElementById(`prodName${i}`).innerText = n || `Ürün ${i}`;
+            document.getElementById(`prodPriceDisplay${i}`).innerText = formatliFiyat;
+            
+            localStorage.setItem(`n_${i}`, n);
+            localStorage.setItem(`p_${i}`, formatliFiyat);
+            localStorage.setItem(`d_${i}`, d);
         }
 
         function openProduct(i) {
             const name = document.getElementById(`prodName${i}`).innerText;
             const price = document.getElementById(`prodPriceDisplay${i}`).innerText;
             const img = document.getElementById(`prodImg${i}`).src;
-            const desc = localStorage.getItem(`d_${i}`) || "Bu ürün için henüz bir açıklama eklenmedi.";
+            const desc = localStorage.getItem(`d_${i}`) || "Özel dokuma plastik hasır.";
             
             document.getElementById('modalTitle').innerText = name;
             document.getElementById('modalBagPriceDisplay').innerText = "₺" + price;
@@ -160,11 +178,8 @@
 
         function addToCart(name, price, img) {
             const index = sepet.findIndex(item => item.name === name);
-            if(index > -1) {
-                sepet[index].qty += 1;
-            } else {
-                sepet.push({ name, price, img, qty: 1 });
-            }
+            if(index > -1) { sepet[index].qty += 1; } 
+            else { sepet.push({ name, price, img, qty: 1 }); }
             updateSepet();
         }
 
@@ -175,9 +190,8 @@
         }
 
         function updateSepet() {
-            localStorage.setItem('hasir_sepet_v8', JSON.stringify(sepet));
+            localStorage.setItem('hasir_sepet_v9', JSON.stringify(sepet));
             document.getElementById('sepetAdet').innerText = sepet.reduce((acc, obj) => acc + obj.qty, 0);
-            
             const list = document.getElementById('sepetListesi');
             let total = 0;
             list.innerHTML = "";
@@ -186,26 +200,24 @@
                 const displayPrice = parseFloat(item.price.replace(',', '.'));
                 const araToplam = displayPrice * item.qty * 25; 
                 total += araToplam;
-
                 list.innerHTML += `
                     <div class="bg-zinc-50 p-5 rounded-[2rem] border border-zinc-100">
                         <div class="flex gap-4 items-center mb-4">
                             <img src="${item.img}" class="w-16 h-16 object-cover rounded-2xl">
                             <div class="flex-1">
-                                <h4 class="font-black text-sm uppercase italic text-zinc-800 tracking-tighter">${item.name}</h4>
-                                <p class="text-[9px] text-zinc-400 font-bold uppercase mt-1 italic">25 ADETLİK BAĞ</p>
+                                <h4 class="font-black text-sm uppercase italic text-zinc-800">${item.name}</h4>
                             </div>
                         </div>
                         <div class="flex items-center justify-between bg-white p-2 rounded-2xl border border-zinc-200">
-                            <span class="text-[9px] font-black uppercase text-zinc-500 pl-3">MİKTAR:</span>
+                            <span class="text-[9px] font-black uppercase text-zinc-500 pl-3">BAĞ:</span>
                             <div class="flex items-center gap-3">
-                                <button onclick="miktarButon(${index}, -1)" class="w-8 h-8 flex items-center justify-center bg-zinc-100 rounded-xl hover:bg-zinc-200 transition font-bold text-lg">-</button>
+                                <button onclick="miktarButon(${index}, -1)" class="w-8 h-8 flex items-center justify-center bg-zinc-100 rounded-xl font-bold">-</button>
                                 <span class="font-black text-zinc-800 text-sm">${item.qty}</span>
-                                <button onclick="miktarButon(${index}, 1)" class="w-8 h-8 flex items-center justify-center bg-zinc-900 text-white rounded-xl hover:bg-emerald-600 transition font-bold text-lg">+</button>
+                                <button onclick="miktarButon(${index}, 1)" class="w-8 h-8 flex items-center justify-center bg-zinc-900 text-white rounded-xl font-bold">+</button>
                             </div>
                         </div>
                         <div class="text-right mt-3">
-                             <span class="text-[10px] text-zinc-400 font-bold uppercase italic">ARA TOPLAM (25 ADET):</span>
+                             <span class="text-[10px] text-zinc-400 font-bold uppercase italic">TOPLAM (25 ADET):</span>
                              <span class="text-emerald-700 font-black text-sm ml-2">₺${araToplam.toFixed(2).replace('.', ',')}</span>
                         </div>
                     </div>`;
@@ -222,48 +234,29 @@
         }
 
         function whatsappSepetGonder() {
-            if(sepet.length === 0) return alert("Sipariş listeniz boş!");
-            let msg = "*HASİRPLAST TOPTAN SİPARİŞ*\n--------------------------\n";
+            if(sepet.length === 0) return;
+            let msg = "*HASİRPLAST SİPARİŞ*\n";
             sepet.forEach((item) => {
                 const ara = (parseFloat(item.price.replace(',','.')) * item.qty * 25).toFixed(2);
-                msg += `📦 *${item.name}*\n   - Miktar: ${item.qty} Bağ (25 Adet)\n   - Ara Toplam: ₺${ara}\n\n`;
+                msg += `📦 *${item.name}* - ${item.qty} Bağ: ₺${ara}\n`;
             });
-            msg += `--------------------------\n💰 *GENEL TOPLAM:* ${document.getElementById('sepetToplam').innerText}\n\n*Bağcılar Şubesi*`;
+            msg += `💰 *GENEL TOPLAM:* ${document.getElementById('sepetToplam').innerText}`;
             window.open(`https://api.whatsapp.com/send?phone=${NO}&text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        // PANELDEKİ DEĞİŞİKLİKLERİ KAYDEDEN ANA FONKSİYON
-        function update(i) {
-            let n = document.getElementById(`inputName${i}`).value;
-            let p = document.getElementById(`inputPrice${i}`).value;
-            let d = document.getElementById(`inputDesc${i}`).value;
-            
-            let formatliFiyat = parseFloat(p || 0).toFixed(2).replace('.', ',');
-            
-            // Arayüzü Güncelle
-            document.getElementById(`prodName${i}`).innerText = n || `Ürün ${i}`;
-            document.getElementById(`prodPriceDisplay${i}`).innerText = formatliFiyat;
-            
-            // Hafızaya Kaydet
-            localStorage.setItem(`n_${i}`, n);
-            localStorage.setItem(`p_${i}`, formatliFiyat);
-            localStorage.setItem(`d_${i}`, d);
         }
 
         function panelGiris() { if(prompt("Şifre:") === "nmkhasir") togglePanel(); }
         function togglePanel() { document.getElementById('adminPanel').classList.toggle('admin-gizli'); }
 
-        // SAYFA YÜKLENDİĞİNDE KAYITLI VERİLERİ GETİR
         window.onload = () => {
             updateSepet();
             for(let i=1; i<=8; i++) {
                 let n = localStorage.getItem(`n_${i}`) || `Ürün ${i}`;
                 let p = localStorage.getItem(`p_${i}`) || "400,00";
                 let d = localStorage.getItem(`d_${i}`) || "";
-                
+                let img = localStorage.getItem(`img_${i}`) || "antrasit.jpeg";
                 document.getElementById(`prodName${i}`).innerText = n;
                 document.getElementById(`prodPriceDisplay${i}`).innerText = p;
-                
+                document.getElementById(`prodImg${i}`).src = img;
                 document.getElementById(`inputName${i}`).value = n;
                 document.getElementById(`inputPrice${i}`).value = p.replace(',00', '').replace(',', '.');
                 document.getElementById(`inputDesc${i}`).value = d;
