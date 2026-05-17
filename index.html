@@ -35,7 +35,7 @@
         <div id="sepetListesi" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
         <div class="p-6 border-t bg-zinc-50">
             <div class="flex justify-between items-center mb-4">
-                <span class="font-bold text-zinc-500 uppercase text-xs tracking-widest">Toplam Sipariş Tutarı:</span>
+                <span class="font-bold text-zinc-500 uppercase text-xs tracking-widest">Genel Toplam:</span>
                 <span id="sepetToplam" class="text-3xl font-black text-emerald-700 italic">₺0,00</span>
             </div>
             <button onclick="whatsappSepetGonder()" class="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs shadow-lg hover:bg-emerald-500 transition active:scale-95">Siparişi WhatsApp'a Aktar</button>
@@ -49,12 +49,13 @@
                 <img id="modalImg" src="" class="w-full h-full object-cover">
             </div>
             <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                <span class="text-emerald-600 font-bold uppercase tracking-[0.2em] text-[10px] mb-2 italic">Toptan Satış Ürünü</span>
-                <h2 id="modalTitle" class="text-4xl font-black italic uppercase text-zinc-900 mb-4 tracking-tighter"></h2>
+                <span class="text-emerald-600 font-bold uppercase tracking-[0.2em] text-[10px] mb-2 italic">Toptan Satış</span>
+                <h2 id="modalTitle" class="text-4xl font-black italic uppercase text-zinc-900 mb-2 tracking-tighter"></h2>
+                <span id="modalBagPriceDisplay" class="text-2xl font-black text-emerald-700 italic mb-6 block"></span>
                 <p id="modalDesc" class="text-zinc-500 mb-8 leading-relaxed italic"></p>
                 <div class="flex justify-between items-center border-t border-zinc-100 pt-8">
-                    <span class="text-zinc-400 font-bold uppercase text-[10px] tracking-widest">Bağlar 25 Adettir</span>
-                    <button id="modalAddBtn" class="bg-zinc-900 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-emerald-600 transition shadow-xl active:scale-90">Listeye Ekle</button>
+                    <span class="text-zinc-400 font-bold uppercase text-[10px] tracking-widest">Minimum 1 Bağ (25 Adet)</span>
+                    <button id="modalAddBtn" class="bg-zinc-900 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-emerald-600 transition shadow-xl active:scale-90">Sepete Ekle</button>
                 </div>
             </div>
         </div>
@@ -81,12 +82,12 @@
     </section>
 
     <footer class="bg-zinc-900 text-white py-14 text-center">
-        <p onclick="panelGiris()" class="text-[11px] uppercase font-bold cursor-pointer opacity-30 hover:opacity-100 tracking-widest italic">© 2026 HASİRPLAST - TOPTAN SATIŞ MERKEZİ</p>
+        <p onclick="panelGiris()" class="text-[11px] uppercase font-bold cursor-pointer opacity-30 hover:opacity-100 tracking-widest italic">© 2026 HASİRPLAST - TOPTAN SATIŞ</p>
     </footer>
 
     <script>
         const NO = "905336586270";
-        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v5')) || [];
+        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v6')) || [];
 
         const grid = document.getElementById('productGrid');
         const editor = document.getElementById('productEditorFields');
@@ -99,11 +100,12 @@
                         <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                         <div class="absolute bottom-6 left-6 bg-emerald-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase italic tracking-tighter shadow-lg">25 ADET (1 BAĞ)</div>
                     </div>
-                    <div class="p-10 flex flex-col items-center text-center">
-                        <h3 id="prodName${i}" class="font-black text-xl uppercase italic text-zinc-800 tracking-tighter">Ürün ${i}</h3>
-                        <div class="h-1 w-12 bg-zinc-100 mt-4 mb-2"></div>
-                        <span class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest italic">Detaylar İçin Tıklayın</span>
-                        <span id="prodPrice${i}" class="hidden">0</span> </div>
+                    <div class="p-8 flex flex-col items-center text-center">
+                        <h3 id="prodName${i}" class="font-black text-lg uppercase italic text-zinc-800 tracking-tighter mb-2">Ürün ${i}</h3>
+                        <span class="text-emerald-700 font-black text-2xl italic">₺<span id="prodPriceDisplay${i}">400,00</span></span>
+                        <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest mt-1 italic">25'li Bağ Fiyatı</span>
+                        <div class="mt-4 text-[10px] text-zinc-300 font-bold uppercase tracking-tighter">Detaylar İçin Tıklayın</div>
+                    </div>
                 </div>`;
             
             editor.innerHTML += `
@@ -111,18 +113,19 @@
                     <span class="text-emerald-400 font-black text-[11px] uppercase italic">Ürün #${i} Ayarı</span>
                     <input type="file" accept="image/*" onchange="changeImage(event, ${i})" class="w-full text-[10px] file:bg-emerald-600 file:text-white file:border-0 file:rounded-lg file:px-4 file:py-2">
                     <input type="text" id="inputName${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="Ürün İsmi">
-                    <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="1 Adet Fiyatı (Örn: 16)">
+                    <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="Bağ Fiyatı (Örn: 400)">
                     <textarea id="inputDesc${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm h-24" placeholder="Ürün Açıklaması..."></textarea>
                 </div>`;
         }
 
         function openProduct(i) {
             const name = document.getElementById(`prodName${i}`).innerText;
-            const price = document.getElementById(`prodPrice${i}`).innerText; // Bu bağ fiyatıdır
+            const price = document.getElementById(`prodPriceDisplay${i}`).innerText;
             const img = document.getElementById(`prodImg${i}`).src;
-            const desc = localStorage.getItem(`d_${i}`) || "Yüksek kaliteli, UV katkılı plastik hasır. Toptan satışa uygundur.";
+            const desc = localStorage.getItem(`d_${i}`) || "Toptan satışa uygun, 25 adetlik bağlarda paketlenmiş yüksek kalite plastik hasır.";
 
             document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalBagPriceDisplay').innerText = "₺" + price;
             document.getElementById('modalImg').src = img;
             document.getElementById('modalDesc').innerText = desc;
             
@@ -158,7 +161,7 @@
         }
 
         function updateSepet() {
-            localStorage.setItem('hasir_sepet_v5', JSON.stringify(sepet));
+            localStorage.setItem('hasir_sepet_v6', JSON.stringify(sepet));
             document.getElementById('sepetAdet').innerText = sepet.reduce((acc, obj) => acc + obj.qty, 0);
             
             const list = document.getElementById('sepetListesi');
@@ -185,6 +188,10 @@
                                 <span class="font-black text-zinc-800 text-sm">${item.qty}</span>
                                 <button onclick="miktarButon(${index}, 1)" class="w-8 h-8 flex items-center justify-center bg-zinc-900 text-white rounded-xl hover:bg-emerald-600 transition font-bold">+</button>
                             </div>
+                        </div>
+                        <div class="text-right px-2">
+                             <span class="text-[10px] text-zinc-400 font-bold uppercase italic">Ara Toplam:</span>
+                             <span class="text-emerald-700 font-black text-sm ml-2">₺${(bagPrice * item.qty).toFixed(2).replace('.', ',')}</span>
                         </div>
                     </div>`;
             });
@@ -224,15 +231,16 @@
 
         function update(i) {
             let n = document.getElementById(`inputName${i}`).value;
-            let p = document.getElementById(`inputPrice${i}`).value;
+            let p = document.getElementById(`inputPrice${i}`).value; // Bu artık direkt Bağ Fiyatı (400 gibi)
             let d = document.getElementById(`inputDesc${i}`).value;
-            let bagFiyati = (parseFloat(p || 0) * 25).toFixed(2).replace('.', ',');
+            
+            let formatliFiyat = parseFloat(p || 0).toFixed(2).replace('.', ',');
             
             document.getElementById(`prodName${i}`).innerText = n;
-            document.getElementById(`prodPrice${i}`).innerText = bagFiyati;
+            document.getElementById(`prodPriceDisplay${i}`).innerText = formatliFiyat;
             
             localStorage.setItem(`n_${i}`, n);
-            localStorage.setItem(`p_${i}`, bagFiyati);
+            localStorage.setItem(`p_${i}`, formatliFiyat);
             localStorage.setItem(`d_${i}`, d);
         }
 
@@ -244,15 +252,14 @@
             updateSepet();
             for(let i=1; i<=8; i++) {
                 let n = localStorage.getItem(`n_${i}`) || "Premium Hasır";
-                let p = localStorage.getItem(`p_${i}`) || "0,00";
+                let p = localStorage.getItem(`p_${i}`) || "400,00";
                 let img = localStorage.getItem(`img_${i}`) || "antrasit.jpeg";
                 let d = localStorage.getItem(`d_${i}`) || "";
                 document.getElementById(`prodName${i}`).innerText = n;
-                document.getElementById(`prodPrice${i}`).innerText = p;
+                document.getElementById(`prodPriceDisplay${i}`).innerText = p;
                 document.getElementById(`prodImg${i}`).src = img;
                 document.getElementById(`inputName${i}`).value = n;
-                let unitPrice = (parseFloat(p.replace(',','.')) / 25).toFixed(2);
-                document.getElementById(`inputPrice${i}`).value = isNaN(unitPrice) ? 0 : unitPrice;
+                document.getElementById(`inputPrice${i}`).value = p.replace(',00', '').replace(',', '.');
                 document.getElementById(`inputDesc${i}`).value = d;
             }
         };
