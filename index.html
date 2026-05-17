@@ -233,7 +233,12 @@
     </div>
 
     <div id="adminPanel" class="fixed inset-y-0 left-0 w-full md:w-[400px] bg-white shadow-2xl p-10 z-[3000] admin-gizli border-r overflow-y-auto">
-        <h3 class="text-emerald-500 font-black uppercase text-xs tracking-widest mb-10 border-b pb-4">Yönetim Paneli</h3>
+        <div class="flex justify-between items-center mb-10 border-b pb-4">
+            <h3 class="text-emerald-500 font-black uppercase text-xs tracking-widest">Yönetim Paneli</h3>
+            <button onclick="adminCikis()" class="text-zinc-400 hover:text-red-500 transition-colors flex items-center gap-2 font-black text-[10px] uppercase">
+                ÇIKIŞ <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
         <div id="adminFields" class="space-y-8"></div>
     </div>
 
@@ -276,6 +281,12 @@
             document.getElementById(`name${i}`).innerText = name;
             document.getElementById(`price${i}`).innerText = price.toLocaleString();
             localStorage.setItem(`data_v12_${i}`, JSON.stringify({name, price, desc}));
+        }
+
+        // Admin Çıkış Fonksiyonu
+        function adminCikis() {
+            document.getElementById('adminPanel').classList.add('admin-gizli');
+            location.reload(); 
         }
 
         function fotoGuncelle(i, f) { if (f.files[0]) { const r = new FileReader(); r.onload = e => { document.getElementById(`img${i}`).src = e.target.result; localStorage.setItem(`img_v12_${i}`, e.target.result); }; r.readAsDataURL(f.files[0]); } }
