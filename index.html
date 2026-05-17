@@ -6,17 +6,10 @@
     
     <title>HASİRPLAST | Toptan Plastik Hasır Kilim, Cami Hasırı ve Piknik Matı Üretimi</title>
 
-    <meta name="description" content="HASİRPLAST: Türkiye geneli ve İstanbul tüm ilçelerine toptan plastik hasır, cami hasırı, mescit matı ve balkon kilimi sevkiyatı. Fabrikadan en uygun fiyatlı, yıkanabilir ve dayanıklı hasır modelleri.">
+    <meta name="description" content="HASİRPLAST: Türkiye'nin 81 iline ve İstanbul'un tüm ilçelerine toptan plastik hasır, cami hasırı, mescit matı sevkiyatı. Fabrikadan en uygun fiyatlı, yıkanabilir hasır modelleri.">
     <meta name="keywords" content="plastik hasır, hasır kilim, toptan hasır, cami hasırı, piknik hasırı, plaj hasırı, yıkanabilir kilim, su geçirmez mat, polipropilen hasır, bağcılar hasır imalatı, hasirplast, nmk hasır, plastik kilim modelleri, ucuz hasır, bahçe hasırı">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="HASİRPLAST">
     <link rel="canonical" href="https://www.hasirplast.com" />
-
-    <meta property="og:title" content="HASİRPLAST | Toptan Plastik Hasır ve Kilim Üreticisi">
-    <meta property="og:description" content="Cami, piknik ve ev dekorasyonu için profesyonel plastik hasır çözümleri. Türkiye'nin her yerine gönderim.">
-    <meta property="og:image" content="antrasit.jpeg">
-    <meta property="og:url" content="https://www.hasirplast.com">
-    <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -27,8 +20,12 @@
         .admin-gizli { display: none !important; }
         .product-card { transition: all 0.4s ease; border-radius: 2.5rem; background: white; border: 1px solid #f0f0f0; }
         .product-card:hover { transform: translateY(-10px); border-color: #10b981; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); }
-        .seo-link { color: #94a3b8; transition: all 0.2s; font-size: 11px; font-weight: 600; text-transform: capitalize; }
-        .seo-link:hover { color: #10b981; }
+        
+        /* SEO Bölgesi Özel Stilleri */
+        .seo-grid-item { font-size: 11px; font-weight: 600; color: #64748b; transition: all 0.2s; cursor: default; }
+        .seo-grid-item:hover { color: #10b981; }
+        .seo-section-title { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: #10b981; margin-bottom: 1.5rem; display: block; }
+        
         .full-detail-view { position: fixed; inset: 0; background: white; z-index: 2000; display: none; overflow-y: auto; }
         .full-detail-active { display: block !important; animation: slideIn 0.5s ease; }
         @keyframes slideIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -39,25 +36,25 @@
     <div id="fullDetail" class="full-detail-view">
         <div class="container mx-auto px-6 py-12">
             <button onclick="closeDetail()" class="mb-12 flex items-center gap-2 font-black uppercase text-xs tracking-widest hover:text-emerald-500 transition-all">
-                <i class="fa-solid fa-arrow-left"></i> Geri Dön
+                <i class="fa-solid fa-arrow-left"></i> Ürünlere Dön
             </button>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
                 <div class="rounded-[3rem] overflow-hidden bg-zinc-100 shadow-2xl h-[500px] lg:h-[700px]">
                     <img id="d_img" src="" class="w-full h-full object-cover">
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span class="text-emerald-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4">HASİRPLAST ÖZEL SERİ</span>
+                    <span class="text-emerald-500 font-black uppercase tracking-[0.3em] text-[10px] mb-4">HASİRPLAST PREMIUM</span>
                     <h1 id="d_name" class="text-5xl lg:text-7xl font-black uppercase italic mb-8 tracking-tighter">ÜRÜN ADI</h1>
                     <div class="bg-zinc-50 p-8 rounded-[2rem] mb-12 border border-zinc-100">
-                        <p id="d_desc" class="text-zinc-600 leading-relaxed text-lg italic italic">Ürün açıklaması buraya gelecek.</p>
+                        <p id="d_desc" class="text-zinc-600 leading-relaxed text-lg italic italic">Hasırplast kalitesiyle üretilmiş profesyonel plastik kilim.</p>
                     </div>
                     <div class="flex items-center gap-10">
                         <div>
                             <p class="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-1">Bağ Fiyatı (25 Adet)</p>
                             <span class="text-5xl font-black italic text-emerald-600">₺<span id="d_total">0</span></span>
                         </div>
-                        <button id="d_add_btn" class="flex-1 bg-[#1a1a1a] text-white py-6 rounded-3xl font-black uppercase text-xs tracking-widest hover:bg-emerald-500 transition-all shadow-2xl active:scale-95">
-                            Siparişe Ekle
+                        <button id="d_add_btn" class="flex-1 bg-[#1a1a1a] text-white py-6 rounded-3xl font-black uppercase text-xs tracking-widest hover:bg-emerald-500 transition-all shadow-2xl">
+                            Sepete Ekle
                         </button>
                     </div>
                 </div>
@@ -78,7 +75,7 @@
                 </button>
             </div>
             <div class="hidden md:block flex-1 max-w-md mx-10">
-                <input type="text" id="siteSearch" oninput="performSearch()" placeholder="Örn: Cami hasırı, 25'li bağ..." class="w-full py-3 px-6 rounded-xl bg-zinc-50 border-none text-xs font-bold focus:ring-2 ring-emerald-500 transition-all">
+                <input type="text" id="siteSearch" oninput="performSearch()" placeholder="Cami hasırı, kilim ara..." class="w-full py-3 px-6 rounded-xl bg-zinc-50 border-none text-xs font-bold focus:ring-2 ring-emerald-500 transition-all">
             </div>
         </div>
     </header>
@@ -86,103 +83,100 @@
     <main class="pt-32 pb-20 px-6">
         <div class="container mx-auto text-center">
             <h2 class="text-7xl md:text-[10rem] font-black italic uppercase tracking-tighter text-zinc-100/80 leading-none">HASİRPLAST</h2>
-            <p class="text-sm font-black uppercase tracking-[0.5em] text-emerald-500 -mt-6 md:-mt-10 relative z-10 mb-20 italic">Profesyonel Plastik Kilim Üretim Merkezi</p>
+            <p class="text-sm font-black uppercase tracking-[0.5em] text-emerald-500 -mt-6 md:-mt-10 relative z-10 mb-20 italic">Profesyonel Hasır & Kilim Fabrikası</p>
             <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
         </div>
     </main>
 
-    <section class="py-20 bg-zinc-50 border-t border-zinc-100 px-6 overflow-hidden">
+    <section class="py-24 bg-white border-y border-zinc-100 px-6">
         <div class="container mx-auto">
-            <div class="mb-16 text-center">
-                <h3 class="text-2xl font-black italic uppercase mb-2">Hizmet Bölgelerimiz</h3>
-                <div class="w-20 h-1 bg-emerald-500 mx-auto"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h4 class="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-6 italic">İstanbul Plastik Hasır & Cami Hasırı Tedarik</h4>
-                    <div class="flex flex-wrap gap-x-4 gap-y-2 border-l-2 border-emerald-100 pl-6">
-                        <span class="seo-link">İstanbul Cami Hasırı</span> <span class="seo-link">Plastik Kilim İstanbul</span>
-                        <span class="seo-link">Bakırköy</span> <span class="seo-link">Başakşehir</span> <span class="seo-link">Bayrampaşa</span>
-                        <span class="seo-link">Arnavutköy</span> <span class="seo-link">Avcılar</span> <span class="seo-link">Bağcılar Cami Hasırı</span>
-                        <span class="seo-link">Bahçelievler</span> <span class="seo-link">Beşiktaş</span> <span class="seo-link">Beylikdüzü</span>
-                        <span class="seo-link">Beyoğlu</span> <span class="seo-link">Büyükçekmece</span> <span class="seo-link">Çatalca</span>
-                        <span class="seo-link">Eyüp</span> <span class="seo-link">Esenler</span> <span class="seo-link">Esenyurt</span>
-                        <span class="seo-link">Fatih</span> <span class="seo-link">Gaziosmanpaşa</span> <span class="seo-link">Güngören</span>
-                        <span class="seo-link">Kağıthane</span> <span class="seo-link">Küçükçekmece</span> <span class="seo-link">Sarıyer</span>
-                        <span class="seo-link">Silivri</span> <span class="seo-link">Sultangazi</span> <span class="seo-link">Şişli</span>
-                        <span class="seo-link">Zeytinburnu</span> <span class="seo-link">Florya</span> <span class="seo-link">Yeşilköy</span>
-                        <span class="seo-link">Yeşilyurt</span> <span class="seo-link">Bahçeşehir</span> <span class="seo-link">Kemerburgaz</span>
-                        <span class="seo-link">Zekeriyaköy</span> <span class="seo-link">Levent</span> <span class="seo-link">Etiler</span>
-                        <span class="seo-link">Ulus</span> <span class="seo-link">Taksim</span> <span class="seo-link">Moda</span>
-                        <span class="seo-link">Acarkent</span> <span class="seo-link">Kavacık</span> <span class="seo-link">Beylerbeyi</span>
-                        <span class="seo-link">Ataşehir</span> <span class="seo-link">Beykoz</span> <span class="seo-link">Çekmeköy</span>
-                        <span class="seo-link">Kartal</span> <span class="seo-link">Kadıköy</span> <span class="seo-link">Maltepe</span>
-                        <span class="seo-link">Pendik</span> <span class="seo-link">Sancaktepe</span> <span class="seo-link">Sultanbeyli</span>
-                        <span class="seo-link">Şile</span> <span class="seo-link">Tuzla</span> <span class="seo-link">Ümraniye</span>
-                        <span class="seo-link">Üsküdar</span> <span class="seo-link">Bebek</span> <span class="seo-link">Hisarüstü</span>
-                        <span class="seo-link">Ortaköy</span> <span class="seo-link">Baltalimanı</span> <span class="seo-link">Emirgan</span>
-                        <span class="seo-link">Tarabya</span> <span class="seo-link">İstinye</span> <span class="seo-link">Yeniköy</span>
-                        <span class="seo-link">Kireçburnu</span> <span class="seo-link">Fenerbahçe</span> <span class="seo-link">Feneryolu</span>
-                        <span class="seo-link">Caddebostan</span> <span class="seo-link">Bağdat Caddesi</span> <span class="seo-link">Bostancı</span>
-                        <span class="seo-link">Göztepe</span> <span class="seo-link">Erenköy</span> <span class="seo-link">Ziverbey</span>
-                        <span class="seo-link">Eminönü</span> <span class="seo-link">Sultanahmet</span> <span class="seo-link">Çemberlitaş</span>
-                        <span class="seo-link">Beyazıt</span> <span class="seo-link">Topkapı</span> <span class="seo-link">Merter</span>
-                        <span class="seo-link">Şirinevler</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-6 italic">Türkiye Geneli Toptan Sevkiyat</h4>
-                    <div class="flex flex-wrap gap-x-4 gap-y-2 border-l-2 border-zinc-200 pl-6 text-zinc-400">
-                        <span class="seo-link underline">Adana</span> <span class="seo-link underline">Adıyaman</span> 
-                        <span class="seo-link underline">Afyon</span> <span class="seo-link underline">Ağrı</span>
-                        <span class="seo-link underline">Aksaray</span> <span class="seo-link underline">Amasya</span>
-                        <span class="seo-link underline">Ankara</span> <span class="seo-link underline">Antalya</span>
-                        <span class="seo-link underline">Ardahan</span> <span class="seo-link underline">Artvin</span>
-                        <span class="seo-link underline">Aydın</span> <span class="seo-link underline">Balıkesir</span>
-                        <span class="seo-link underline">Bartın</span> <span class="seo-link underline">Batman</span>
-                        <span class="seo-link underline">Bayburt</span> <span class="seo-link underline">Bilecik</span>
-                        <span class="seo-link underline">Bingöl</span> <span class="seo-link underline">Bitlis</span>
-                        <span class="seo-link underline">Bolu</span> <span class="seo-link underline">Burdur</span>
-                        <span class="seo-link underline">Bursa</span> <span class="seo-link underline">Çanakkale</span>
-                        <span class="seo-link underline">Çankırı</span> <span class="seo-link underline">Çorum</span>
-                        <span class="seo-link underline">Denizli</span> <span class="seo-link underline">Diyarbakır</span>
-                        <span class="seo-link underline">Düzce</span> <span class="seo-link underline">Edirne</span>
-                        <span class="seo-link underline">Elazığ</span> <span class="seo-link underline">Erzincan</span>
-                        <span class="seo-link underline">Erzurum</span> <span class="seo-link underline">Eskişehir</span>
-                        <span class="seo-link underline">Gaziantep</span> <span class="seo-link underline">Giresun</span>
-                        <span class="seo-link underline">Gümüşhane</span> <span class="seo-link underline">Hakkari</span>
-                        <span class="seo-link underline">Hatay</span> <span class="seo-link underline">Isparta</span>
-                        <span class="seo-link underline">Iğdır</span> <span class="seo-link underline">İzmir</span>
-                        <span class="seo-link underline">Kahramanmaraş</span> <span class="seo-link underline">Karabük</span>
-                        <span class="seo-link underline">Karaman</span> <span class="seo-link underline">Kars</span>
-                        <span class="seo-link underline">Kastamonu</span> <span class="seo-link underline">Kayseri</span>
-                        <span class="seo-link underline">Kırıkkale</span> <span class="seo-link underline">Kırklareli</span>
-                        <span class="seo-link underline">Kırşehir</span> <span class="seo-link underline">Kilis</span>
-                        <span class="seo-link underline">Kocaeli</span> <span class="seo-link underline">Konya</span>
-                        <span class="seo-link underline">Kütahya</span> <span class="seo-link underline">Malatya</span>
-                        <span class="seo-link underline">Manisa</span> <span class="seo-link underline">Mardin</span>
-                        <span class="seo-link underline">Mersin</span> <span class="seo-link underline">Muğla</span>
-                        <span class="seo-link underline">Muş</span> <span class="seo-link underline">Nevşehir</span>
-                        <span class="seo-link underline">Niğde</span> <span class="seo-link underline">Ordu</span>
-                        <span class="seo-link underline">Osmaniye</span> <span class="seo-link underline">Rize</span>
-                        <span class="seo-link underline">Sakarya</span> <span class="seo-link underline">Samsun</span>
-                        <span class="seo-link underline">Siirt</span> <span class="seo-link underline">Sinop</span>
-                        <span class="seo-link underline">Sivas</span> <span class="seo-link underline">Tekirdağ</span>
-                        <span class="seo-link underline">Tokat</span> <span class="seo-link underline">Trabzon</span>
-                        <span class="seo-link underline">Tunceli</span> <span class="seo-link underline">Şanlıurfa</span>
-                        <span class="seo-link underline">Uşak</span> <span class="seo-link underline">Van</span>
-                        <span class="seo-link underline">Yalova</span> <span class="seo-link underline">Yozgat</span>
-                        <span class="seo-link underline">Zonguldak</span>
-                    </div>
-                </div>
-            </div>
             
-            <div class="mt-20 pt-10 border-t border-zinc-200 text-center">
-                <p class="text-zinc-400 text-[10px] leading-relaxed uppercase font-black italic max-w-4xl mx-auto">
-                    Hasırplast olarak Türkiye'nin 81 iline ve İstanbul'un tüm semtlerine profesyonel plastik kilim, cami hasırı, mescit matı, piknik ve plaj hasırı tedarik ediyoruz. NMK Hasır bünyesinde üretilen polipropilen ürünlerimiz su geçirmez, yıkanabilir ve dış mekan kullanımına uygundur. Toptan plastik kilim fiyatları için hemen bizimle iletişime geçin.
+            <div class="mb-20 text-center max-w-4xl mx-auto">
+                <h2 class="text-4xl font-black italic uppercase mb-6 tracking-tighter">Türkiye'nin Hasır Tedarik Noktası</h2>
+                <p class="text-zinc-500 text-sm leading-relaxed font-medium">
+                    <strong class="text-zinc-900">Hasırplast</strong>, İstanbul Bağcılar merkezli üretim tesislerinde yüksek kaliteli polipropilen plastik hasır, <strong>toptan cami hasırı</strong>, mescit matları ve dekoratif balkon kilimleri üretmektedir. NMK Hasır güvencesiyle Türkiye'nin 81 iline ve İstanbul'un tüm mahallelerine hızlı sevkiyat imkanı sunuyoruz. Ürünlerimiz UV katkılı, su geçirmez, yıkanabilir ve uzun ömürlüdür.
                 </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                
+                <div class="space-y-12">
+                    <div>
+                        <span class="seo-section-title">İstanbul Anadolu Yakası</span>
+                        <div class="grid grid-cols-2 gap-y-2">
+                            <span class="seo-grid-item">Ataşehir Plastik Hasır</span> <span class="seo-grid-item">Beykoz Hasır Kilim</span>
+                            <span class="seo-grid-item">Çekmeköy Mescit Matı</span> <span class="seo-grid-item">Kadıköy Plaj Hasırı</span>
+                            <span class="seo-grid-item">Kartal Cami Hasırı</span> <span class="seo-grid-item">Maltepe Hasır Satışı</span>
+                            <span class="seo-grid-item">Pendik Toptan Hasır</span> <span class="seo-grid-item">Sancaktepe Kilim</span>
+                            <span class="seo-grid-item">Sultanbeyli Hasır</span> <span class="seo-grid-item">Şile Piknik Matı</span>
+                            <span class="seo-grid-item">Tuzla Plastik Hasır</span> <span class="seo-grid-item">Ümraniye Cami Hasırı</span>
+                            <span class="seo-grid-item">Üsküdar Mescit Matı</span> <span class="seo-grid-item">Beylerbeyi Hasır</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="seo-section-title">İstanbul Avrupa Yakası</span>
+                        <div class="grid grid-cols-2 gap-y-2">
+                            <span class="seo-grid-item">Arnavutköy Hasır</span> <span class="seo-grid-item">Avcılar Hasır Kilim</span>
+                            <span class="seo-grid-item">Bağcılar Fabrika</span> <span class="seo-grid-item">Bahçelievler Satış</span>
+                            <span class="seo-grid-item">Bakırköy Hasır</span> <span class="seo-grid-item">Başakşehir Cami</span>
+                            <span class="seo-grid-item">Bayrampaşa Toptan</span> <span class="seo-grid-item">Beşiktaş Dekoratif</span>
+                            <span class="seo-grid-item">Beylikdüzü Hasır</span> <span class="seo-grid-item">Beyoğlu Mescit</span>
+                            <span class="seo-grid-item">Büyükçekmece Mat</span> <span class="seo-grid-item">Çatalca Piknik</span>
+                            <span class="seo-grid-item">Esenler Hasır Kilim</span> <span class="seo-grid-item">Esenyurt Plastik</span>
+                            <span class="seo-grid-item">Eyüp Cami Hasırı</span> <span class="seo-grid-item">Fatih Hasır Satışı</span>
+                            <span class="seo-grid-item">Gaziosmanpaşa Hasır</span> <span class="seo-grid-item">Güngören İmalat</span>
+                            <span class="seo-grid-item">Kağıthane Kilim</span> <span class="seo-grid-item">Küçükçekmece Hasır</span>
+                            <span class="seo-grid-item">Sarıyer Plaj Hasırı</span> <span class="seo-grid-item">Silivri Hasır Mat</span>
+                            <span class="seo-grid-item">Sultangazi Hasır</span> <span class="seo-grid-item">Şişli Modern Kilim</span>
+                            <span class="seo-grid-item">Zeytinburnu Hasır</span> <span class="seo-grid-item">Hadımköy Hasır</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <span class="seo-section-title">Türkiye Geneli Toptan Sevkiyat Ağımız</span>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-3 gap-x-4 border-l border-zinc-100 pl-8">
+                        <span class="seo-grid-item">Adana Plastik Hasır</span> <span class="seo-grid-item">Adıyaman Hasır</span>
+                        <span class="seo-grid-item">Afyon Plastik Kilim</span> <span class="seo-grid-item">Ağrı Cami Hasırı</span>
+                        <span class="seo-grid-item">Aksaray Hasır Mat</span> <span class="seo-grid-item">Amasya Kilim</span>
+                        <span class="seo-grid-item">Ankara Toptan Hasır</span> <span class="seo-grid-item">Antalya Plaj Hasırı</span>
+                        <span class="seo-grid-item">Artvin Hasır Kilim</span> <span class="seo-grid-item">Aydın Hasır Mat</span>
+                        <span class="seo-grid-item">Balıkesir Hasır</span> <span class="seo-grid-item">Bartın Piknik Matı</span>
+                        <span class="seo-grid-item">Batman Hasır Kilim</span> <span class="seo-grid-item">Bilecik Cami Hasırı</span>
+                        <span class="seo-grid-item">Bingöl Hasır Satış</span> <span class="seo-grid-item">Bitlis Mescit Matı</span>
+                        <span class="seo-grid-item">Bolu Plastik Hasır</span> <span class="seo-grid-item">Bursa Toptan Kilim</span>
+                        <span class="seo-grid-item">Çanakkale Hasır</span> <span class="seo-grid-item">Çorum Cami Hasırı</span>
+                        <span class="seo-grid-item">Denizli Hasır Mat</span> <span class="seo-grid-item">Diyarbakır Hasır</span>
+                        <span class="seo-grid-item">Edirne Plastik Hasır</span> <span class="seo-grid-item">Elazığ Hasır Kilim</span>
+                        <span class="seo-grid-item">Erzincan Hasır Mat</span> <span class="seo-grid-item">Erzurum Cami Hasırı</span>
+                        <span class="seo-grid-item">Eskişehir Kilim</span> <span class="seo-grid-item">Gaziantep Hasır</span>
+                        <span class="seo-grid-item">Giresun Hasır Mat</span> <span class="seo-grid-item">Hatay Plastik Hasır</span>
+                        <span class="seo-grid-item">Isparta Hasır Kilim</span> <span class="seo-grid-item">Mersin Plaj Hasırı</span>
+                        <span class="seo-grid-item">İstanbul Hasır</span> <span class="seo-grid-item">İzmir Toptan Hasır</span>
+                        <span class="seo-grid-item">Kars Cami Hasırı</span> <span class="seo-grid-item">Kastamonu Hasır</span>
+                        <span class="seo-grid-item">Kayseri Hasır Kilim</span> <span class="seo-grid-item">Kocaeli Hasır Mat</span>
+                        <span class="seo-grid-item">Konya Cami Hasırı</span> <span class="seo-grid-item">Kütahya Hasır Kilim</span>
+                        <span class="seo-grid-item">Malatya Hasır Mat</span> <span class="seo-grid-item">Manisa Plastik Hasır</span>
+                        <span class="seo-grid-item">Kahramanmaraş Hasır</span> <span class="seo-grid-item">Mardin Hasır Kilim</span>
+                        <span class="seo-grid-item">Muğla Plaj Hasırı</span> <span class="seo-grid-item">Nevşehir Hasır Mat</span>
+                        <span class="seo-grid-item">Ordu Hasır Kilim</span> <span class="seo-grid-item">Rize Hasır Mat</span>
+                        <span class="seo-grid-item">Sakarya Hasır Kilim</span> <span class="seo-grid-item">Samsun Hasır Mat</span>
+                        <span class="seo-grid-item">Siirt Cami Hasırı</span> <span class="seo-grid-item">Sinop Hasır Kilim</span>
+                        <span class="seo-grid-item">Sivas Hasır Mat</span> <span class="seo-grid-item">Tekirdağ Hasır</span>
+                        <span class="seo-grid-item">Tokat Hasır Kilim</span> <span class="seo-grid-item">Trabzon Cami Hasırı</span>
+                        <span class="seo-grid-item">Şanlıurfa Hasır</span> <span class="seo-grid-item">Uşak Hasır Mat</span>
+                        <span class="seo-grid-item">Van Cami Hasırı</span> <span class="seo-grid-item">Yalova Hasır Kilim</span>
+                        <span class="seo-grid-item">Zonguldak Hasır</span> <span class="seo-grid-item">Düzce Hasır Mat</span>
+                    </div>
+                    
+                    <div class="mt-12 flex flex-wrap gap-3 italic">
+                        <span class="text-[9px] bg-zinc-100 px-3 py-1 rounded-full text-zinc-400 font-bold uppercase tracking-tighter">Polipropilen Hasır</span>
+                        <span class="text-[9px] bg-zinc-100 px-3 py-1 rounded-full text-zinc-400 font-bold uppercase tracking-tighter">UV Katkılı Hasır</span>
+                        <span class="text-[9px] bg-zinc-100 px-3 py-1 rounded-full text-zinc-400 font-bold uppercase tracking-tighter">Su Geçirmez Kilim</span>
+                        <span class="text-[9px] bg-zinc-100 px-3 py-1 rounded-full text-zinc-400 font-bold uppercase tracking-tighter">Yıkanabilir Hasır</span>
+                        <span class="text-[9px] bg-zinc-100 px-3 py-1 rounded-full text-zinc-400 font-bold uppercase tracking-tighter">25 Adet Bağ Fiyatı</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -203,20 +197,20 @@
                         </a>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-zinc-400 text-sm font-bold uppercase italic">
+                <div class="grid grid-cols-2 gap-10 text-zinc-500 text-[11px] font-black uppercase tracking-widest italic">
                     <div class="space-y-4">
-                        <p class="text-emerald-500 text-[10px] tracking-widest mb-6">Kurumsal</p>
-                        <p class="hover:text-emerald-500 cursor-pointer">Hakkımızda</p>
-                        <p class="hover:text-emerald-500 cursor-pointer">Üretim</p>
+                        <p class="text-emerald-500">ŞİRKET</p>
+                        <p class="hover:text-white cursor-pointer" onclick="openInfo('Hakkımızda')">Hakkımızda</p>
+                        <p class="hover:text-white cursor-pointer" onclick="openInfo('Üretim')">Üretim Tesisi</p>
                     </div>
                     <div class="space-y-4">
-                        <p class="text-emerald-500 text-[10px] tracking-widest mb-6">Müşteri</p>
-                        <p class="hover:text-emerald-500 cursor-pointer">Güvenli Alışveriş</p>
-                        <p class="hover:text-emerald-500 cursor-pointer">Banka Bilgileri</p>
+                        <p class="text-emerald-500">YARDIM</p>
+                        <p class="hover:text-white cursor-pointer" onclick="openInfo('Güvenli')">Güvenli Alışveriş</p>
+                        <p class="hover:text-white cursor-pointer" onclick="openInfo('Banka')">Banka Bilgileri</p>
                     </div>
                 </div>
             </div>
-            <p class="text-center text-zinc-800 text-[10px] font-black tracking-widest border-t border-zinc-900 pt-10 uppercase">© 2026 HASİRPLAST. Toptan Plastik Kilim Dünyası</p>
+            <p class="text-center text-zinc-800 text-[10px] font-black tracking-widest border-t border-zinc-900 pt-10 uppercase">© 2026 HASİRPLAST. Toptan Plastik Hasır ve Kilim Fabrikası</p>
         </div>
     </footer>
 
@@ -227,36 +221,38 @@
             <button onclick="toggleSepet(false)" class="text-4xl text-zinc-300">×</button>
         </div>
         <div id="sepetListesi" class="flex-1 overflow-y-auto p-10 space-y-6"></div>
-        <div class="p-10 border-t bg-white">
-            <div class="flex justify-between items-end mb-6">
-                <span class="text-zinc-400 font-black text-[10px] uppercase">Toplam</span>
+        <div class="p-10 border-t bg-white space-y-6">
+            <div class="flex justify-between items-end">
+                <span class="text-zinc-400 font-black text-[10px] uppercase">Genel Toplam</span>
                 <span class="text-4xl font-black italic text-emerald-600">₺<span id="genelToplam">0</span></span>
             </div>
-            <button onclick="whatsappGonder()" class="w-full bg-emerald-600 text-white py-6 rounded-3xl font-black uppercase text-xs tracking-widest hover:bg-emerald-500 shadow-2xl">
-                Siparişi Tamamla (WhatsApp)
+            <button onclick="whatsappGonder()" class="w-full bg-emerald-600 text-white py-6 rounded-3xl font-black uppercase text-xs tracking-widest hover:bg-emerald-500 shadow-2xl transition-all">
+                Sipariş Talebi Gönder (WhatsApp)
             </button>
         </div>
     </div>
 
     <div id="adminPanel" class="fixed inset-y-0 left-0 w-full md:w-[400px] bg-white shadow-2xl p-10 z-[3000] admin-gizli border-r overflow-y-auto">
-        <h3 class="text-emerald-500 font-black uppercase text-xs tracking-widest mb-10 border-b pb-4">Yönetim</h3>
+        <h3 class="text-emerald-500 font-black uppercase text-xs tracking-widest mb-10 border-b pb-4">Yönetim Paneli</h3>
         <div id="adminFields" class="space-y-8"></div>
     </div>
 
     <script>
-        // JS Kodları (Öncekiyle aynı, sadece sürüm v11 olarak güncellendi)
-        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v11')) || [];
+        // Sürüm v12 - Gelişmiş SEO ve Kullanıcı Deneyimi
+        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v12')) || [];
         document.addEventListener('keydown', e => { if (e.ctrlKey && e.key === 'p') { e.preventDefault(); if(prompt("Şifre:") === "nmkhasir") document.getElementById('adminPanel').classList.toggle('admin-gizli'); } });
+        
         const grid = document.getElementById('productGrid');
         const fields = document.getElementById('adminFields');
+        
         for(let i=1; i<=8; i++) {
             grid.innerHTML += `
                 <div id="card${i}" class="product-card p-6 flex flex-col group cursor-pointer" onclick="openDetail(${i})">
                     <div class="relative overflow-hidden rounded-[2rem] mb-6 aspect-square bg-zinc-50">
                         <img id="img${i}" src="antrasit.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
-                    <h3 id="name${i}" class="font-black uppercase italic text-xl mb-1 group-hover:text-emerald-500">Model ${i}</h3>
-                    <p class="text-zinc-400 text-[10px] font-black uppercase tracking-widest mb-6 italic">Bağ (25 Adet)</p>
+                    <h3 id="name${i}" class="font-black uppercase italic text-xl mb-1 group-hover:text-emerald-500 tracking-tighter">Model ${i}</h3>
+                    <p class="text-zinc-400 text-[10px] font-black uppercase tracking-widest mb-6 italic">25 Adetlik Bağ</p>
                     <div class="mt-auto flex justify-between items-center" onclick="event.stopPropagation()">
                         <span class="text-2xl font-black italic">₺<span id="price${i}">0</span></span>
                         <button onclick="sepeteEkle(${i})" class="w-14 h-14 bg-zinc-100 rounded-2xl hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all">
@@ -268,21 +264,24 @@
                 <div class="p-6 bg-zinc-50 rounded-3xl border border-zinc-200 space-y-4">
                     <input type="file" onchange="fotoGuncelle(${i}, this)" class="text-[10px]">
                     <input type="text" id="in_name${i}" oninput="kaydet(${i})" placeholder="Ürün İsmi" class="w-full p-3 border rounded-xl text-xs font-bold">
-                    <input type="number" id="in_price${i}" oninput="kaydet(${i})" placeholder="Fiyat (₺)" class="w-full p-3 border rounded-xl text-xs font-bold">
-                    <textarea id="in_desc${i}" oninput="kaydet(${i})" placeholder="Açıklama..." class="w-full p-3 border rounded-xl text-xs font-bold h-20"></textarea>
+                    <input type="number" id="in_price${i}" oninput="kaydet(${i})" placeholder="Adet Fiyatı" class="w-full p-3 border rounded-xl text-xs font-bold">
+                    <textarea id="in_desc${i}" oninput="kaydet(${i})" placeholder="SEO Açıklaması..." class="w-full p-3 border rounded-xl text-xs font-bold h-20"></textarea>
                 </div>`;
         }
+
         function kaydet(i) {
             const name = document.getElementById(`in_name${i}`).value || "Model " + i;
             const price = parseFloat(document.getElementById(`in_price${i}`).value) || 0;
-            const desc = document.getElementById(`in_desc${i}`).value || "Profesyonel seri hasır.";
+            const desc = document.getElementById(`in_desc${i}`).value || "Hasırplast özel üretim plastik kilim.";
             document.getElementById(`name${i}`).innerText = name;
             document.getElementById(`price${i}`).innerText = price.toLocaleString();
-            localStorage.setItem(`data_v11_${i}`, JSON.stringify({name, price, desc}));
+            localStorage.setItem(`data_v12_${i}`, JSON.stringify({name, price, desc}));
         }
-        function fotoGuncelle(i, f) { if (f.files[0]) { const r = new FileReader(); r.onload = e => { document.getElementById(`img${i}`).src = e.target.result; localStorage.setItem(`img_v11_${i}`, e.target.result); }; r.readAsDataURL(f.files[0]); } }
+
+        function fotoGuncelle(i, f) { if (f.files[0]) { const r = new FileReader(); r.onload = e => { document.getElementById(`img${i}`).src = e.target.result; localStorage.setItem(`img_v12_${i}`, e.target.result); }; r.readAsDataURL(f.files[0]); } }
+        
         function openDetail(i) {
-            const data = JSON.parse(localStorage.getItem(`data_v11_${i}`)) || { name: "Model "+i, price: 0, desc: "..." };
+            const data = JSON.parse(localStorage.getItem(`data_v12_${i}`)) || { name: "Model "+i, price: 0, desc: "..." };
             document.getElementById('d_img').src = document.getElementById(`img${i}`).src;
             document.getElementById('d_name').innerText = data.name;
             document.getElementById('d_desc').innerText = data.desc;
@@ -290,16 +289,19 @@
             document.getElementById('d_add_btn').onclick = () => { sepeteEkle(i); closeDetail(); };
             document.getElementById('fullDetail').classList.add('full-detail-active');
         }
+
         function closeDetail() { document.getElementById('fullDetail').classList.remove('full-detail-active'); }
+        
         function sepeteEkle(i) {
-            const data = JSON.parse(localStorage.getItem(`data_v11_${i}`)) || { name: "Model "+i, price: 0 };
+            const data = JSON.parse(localStorage.getItem(`data_v12_${i}`)) || { name: "Model "+i, price: 0 };
             const bagPrice = data.price * 25;
             const idx = sepet.findIndex(s => s.id === i);
             if(idx > -1) sepet[idx].qty++; else sepet.push({id: i, name: data.name, price: bagPrice, qty: 1});
             sepetGuncelle(); toggleSepet(true);
         }
+
         function sepetGuncelle() {
-            localStorage.setItem('hasir_sepet_v11', JSON.stringify(sepet));
+            localStorage.setItem('hasir_sepet_v12', JSON.stringify(sepet));
             document.getElementById('sepetAdet').innerText = sepet.reduce((a, b) => a + b.qty, 0);
             const list = document.getElementById('sepetListesi'); list.innerHTML = ""; let total = 0;
             sepet.forEach((item, idx) => {
@@ -308,18 +310,21 @@
             });
             document.getElementById('genelToplam').innerText = total.toLocaleString();
         }
+
         function degistir(i, v) { sepet[i].qty += v; if(sepet[i].qty < 1) sepet.splice(i, 1); sepetGuncelle(); }
         function toggleSepet(s) { document.getElementById('sepetSidebar').style.transform = s ? 'translateX(0%)' : 'translateX(100%)'; document.getElementById('sepetOverlay').classList.toggle('hidden', !s); }
         function performSearch() { const q = document.getElementById('siteSearch').value.toLowerCase(); document.querySelectorAll('.product-card').forEach(c => { c.style.display = c.innerText.toLowerCase().includes(q) ? 'flex' : 'none'; }); }
+        
         function whatsappGonder() {
-            let t = "*HASİRPLAST SİPARİŞ*\n\n";
-            sepet.forEach(i => t += `📦 *${i.name}* - ${i.qty} Bağ\n`);
+            let t = "*HASİRPLAST YENİ SİPARİŞ*\n\n";
+            sepet.forEach(i => t += `📦 *${i.name}* - ${i.qty} Bağ (25li)\n`);
             t += `\n*Toplam: ₺${document.getElementById('genelToplam').innerText}*`;
             window.open(`https://wa.me/905336586270?text=${encodeURIComponent(t)}`);
         }
+
         window.onload = () => {
             for(let i=1; i<=8; i++) {
-                const d = JSON.parse(localStorage.getItem(`data_v11_${i}`)); const im = localStorage.getItem(`img_v11_${i}`);
+                const d = JSON.parse(localStorage.getItem(`data_v12_${i}`)); const im = localStorage.getItem(`img_v12_${i}`);
                 if(d) { document.getElementById(`in_name${i}`).value = d.name; document.getElementById(`in_price${i}`).value = d.price; document.getElementById(`in_desc${i}`).value = d.desc; kaydet(i); }
                 if(im) document.getElementById(`img${i}`).src = im;
             }
