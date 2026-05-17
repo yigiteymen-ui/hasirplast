@@ -88,6 +88,39 @@
         </div>
     </main>
 
+    <section class="py-16 bg-zinc-50 border-t border-zinc-100 px-6">
+        <div class="container mx-auto">
+            <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400 mb-8 text-center italic">Hizmet Alanlarımız & Ürün Etiketleri</h4>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs font-bold text-zinc-400 uppercase italic leading-relaxed text-center max-w-5xl mx-auto">
+                <span>Plastik Hasır Kilim</span> <span class="text-emerald-400">•</span>
+                <span>Toptan Hasır Satışı</span> <span class="text-emerald-400">•</span>
+                <span>Cami Hasırı</span> <span class="text-emerald-400">•</span>
+                <span>Mescit Matı</span> <span class="text-emerald-400">•</span>
+                <span>Piknik Hasırı</span> <span class="text-emerald-400">•</span>
+                <span>Plaj Hasırı</span> <span class="text-emerald-400">•</span>
+                <span>Balkon Kilimi</span> <span class="text-emerald-400">•</span>
+                <span>Bahçe Matı</span> <span class="text-emerald-400">•</span>
+                <span>Yıkanabilir Kilim</span> <span class="text-emerald-400">•</span>
+                <span>Su Geçirmez Mat</span> <span class="text-emerald-400">•</span>
+                <span>Polipropilen Hasır</span> <span class="text-emerald-400">•</span>
+                <span>Sentetik Hasır Üretimi</span> <span class="text-emerald-400">•</span>
+                <span>Bağcılar Hasır İmalatı</span> <span class="text-emerald-400">•</span>
+                <span>İstanbul Kilim Toptancıları</span> <span class="text-emerald-400">•</span>
+                <span>Modern Hasır Desenleri</span> <span class="text-emerald-400">•</span>
+                <span>Geometrik Desenli Kilim</span> <span class="text-emerald-400">•</span>
+                <span>Antrasit Hasır</span> <span class="text-emerald-400">•</span>
+                <span>Mutfak Kilimi</span> <span class="text-emerald-400">•</span>
+                <span>Teras Dekoru</span> <span class="text-emerald-400">•</span>
+                <span>Dış Mekan Kilimi</span> <span class="text-emerald-400">•</span>
+                <span>Kamp Matı</span> <span class="text-emerald-400">•</span>
+                <span>Dayanıklı Plastik Örtü</span> <span class="text-emerald-400">•</span>
+                <span>Hasır Kilim Modelleri 2026</span> <span class="text-emerald-400">•</span>
+                <span>NMK Hasır Tekstil</span> <span class="text-emerald-400">•</span>
+                <span>Hasır Plastik Üretim Tesisi</span>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-[#1a1a1a] text-white pt-24 pb-12 px-6">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-20">
@@ -157,7 +190,7 @@
             'Banka': 'Banka bilgilerimiz için lütfen WhatsApp hattımız üzerinden iletişime geçiniz.'
         };
 
-        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v8')) || [];
+        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v9')) || [];
 
         document.addEventListener('keydown', e => {
             if (e.ctrlKey && e.key === 'p') {
@@ -200,19 +233,19 @@
             const desc = document.getElementById(`in_desc${i}`).value || "Profesyonel seri hasır kilim.";
             document.getElementById(`name${i}`).innerText = name;
             document.getElementById(`price${i}`).innerText = price.toLocaleString();
-            localStorage.setItem(`data_v8_${i}`, JSON.stringify({name, price, desc}));
+            localStorage.setItem(`data_v9_${i}`, JSON.stringify({name, price, desc}));
         }
 
         function fotoGuncelle(i, f) {
             if (f.files[0]) {
                 const r = new FileReader();
-                r.onload = e => { document.getElementById(`img${i}`).src = e.target.result; localStorage.setItem(`img_v8_${i}`, e.target.result); };
+                r.onload = e => { document.getElementById(`img${i}`).src = e.target.result; localStorage.setItem(`img_v9_${i}`, e.target.result); };
                 r.readAsDataURL(f.files[0]);
             }
         }
 
         function openDetail(i) {
-            const data = JSON.parse(localStorage.getItem(`data_v8_${i}`)) || { name: "Ürün "+i, price: 0, desc: "..." };
+            const data = JSON.parse(localStorage.getItem(`data_v9_${i}`)) || { name: "Ürün "+i, price: 0, desc: "..." };
             document.getElementById('d_img').src = document.getElementById(`img${i}`).src;
             document.getElementById('d_name').innerText = data.name;
             document.getElementById('d_desc').innerText = data.desc;
@@ -240,7 +273,7 @@
         }
 
         function sepeteEkle(i) {
-            const data = JSON.parse(localStorage.getItem(`data_v8_${i}`)) || { name: "Ürün "+i, price: 0 };
+            const data = JSON.parse(localStorage.getItem(`data_v9_${i}`)) || { name: "Ürün "+i, price: 0 };
             const bagPrice = data.price * 25;
             const idx = sepet.findIndex(s => s.id === i);
             if(idx > -1) sepet[idx].qty++;
@@ -250,7 +283,7 @@
         }
 
         function sepetGuncelle() {
-            localStorage.setItem('hasir_sepet_v8', JSON.stringify(sepet));
+            localStorage.setItem('hasir_sepet_v9', JSON.stringify(sepet));
             document.getElementById('sepetAdet').innerText = sepet.reduce((a, b) => a + b.qty, 0);
             const list = document.getElementById('sepetListesi');
             list.innerHTML = "";
@@ -298,8 +331,8 @@
 
         window.onload = () => {
             for(let i=1; i<=8; i++) {
-                const d = JSON.parse(localStorage.getItem(`data_v8_${i}`));
-                const im = localStorage.getItem(`img_v8_${i}`);
+                const d = JSON.parse(localStorage.getItem(`data_v9_${i}`));
+                const im = localStorage.getItem(`img_v9_${i}`);
                 if(d) { document.getElementById(`in_name${i}`).value = d.name; document.getElementById(`in_price${i}`).value = d.price; document.getElementById(`in_desc${i}`).value = d.desc; kaydet(i); }
                 if(im) document.getElementById(`img${i}`).src = im;
             }
