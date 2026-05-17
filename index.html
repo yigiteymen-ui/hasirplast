@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HasırPlast | Profesyonel Hasır Sistemleri</title>
+    <title>HasırPlast | Profesyonel Toptan Sistemler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -20,23 +20,23 @@
 
     <div id="adminPanel" class="fixed inset-y-0 left-0 w-80 bg-zinc-900 text-white p-6 shadow-2xl z-[150] overflow-y-auto admin-gizli border-r border-emerald-500/30">
         <div class="flex justify-between items-center mb-6 border-b border-zinc-800 pb-4">
-            <h3 class="text-xl font-bold text-emerald-400 italic uppercase">Yönetim Paneli</h3>
+            <h3 class="text-xl font-bold text-emerald-400 italic uppercase">Ürün Yönetimi</h3>
             <button onclick="togglePanel()" class="text-gray-400 hover:text-white text-3xl">×</button>
         </div>
         <div id="productEditorFields" class="space-y-6"></div>
-        <button onclick="localStorage.clear(); location.reload();" class="w-full mt-8 bg-red-900/20 text-red-500 text-[10px] font-bold py-3 rounded border border-red-800/30 uppercase tracking-widest">Sıfırla</button>
+        <button onclick="localStorage.clear(); location.reload();" class="w-full mt-8 bg-red-900/20 text-red-500 text-[10px] font-bold py-3 rounded border border-red-800/30 uppercase tracking-widest">Tüm Verileri Temizle</button>
     </div>
 
     <div id="sepetOverlay" onclick="toggleSepet()" class="fixed inset-0 bg-black/50 z-[100] hidden backdrop-blur-sm"></div>
     <div id="sepetSidebar" class="fixed inset-y-0 right-0 w-full md:w-96 bg-white z-[110] shadow-2xl translate-x-full flex flex-col">
         <div class="p-6 border-b flex justify-between items-center bg-zinc-900 text-white">
-            <h3 class="font-black italic uppercase tracking-tighter text-xl">Sepetim</h3>
+            <h3 class="font-black italic uppercase tracking-tighter text-xl">Sipariş Listem</h3>
             <button onclick="toggleSepet()" class="text-2xl font-light">×</button>
         </div>
         <div id="sepetListesi" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
         <div class="p-6 border-t bg-zinc-50">
             <div class="flex justify-between items-center mb-4">
-                <span class="font-bold text-zinc-500 uppercase text-xs">Toplam Tutar:</span>
+                <span class="font-bold text-zinc-500 uppercase text-xs">Genel Toplam:</span>
                 <span id="sepetToplam" class="text-2xl font-black text-emerald-700 italic">₺0,00</span>
             </div>
             <button onclick="whatsappSepetGonder()" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-black uppercase tracking-widest shadow-lg hover:bg-emerald-500 transition active:scale-95">Siparişi WhatsApp ile Gönder</button>
@@ -50,13 +50,13 @@
                 <img id="modalImg" src="" class="w-full h-full object-cover">
             </div>
             <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                <span class="text-emerald-600 font-bold uppercase tracking-[0.2em] text-[10px] mb-2 italic">Minimum Satış: 25 Adet (1 Bağ)</span>
+                <span class="text-emerald-600 font-bold uppercase tracking-[0.2em] text-[10px] mb-2 italic underline decoration-emerald-200">Minimum 1 Bağ (25 Adet)</span>
                 <h2 id="modalTitle" class="text-4xl font-black italic uppercase text-zinc-900 mb-4 tracking-tighter"></h2>
                 <p id="modalDesc" class="text-zinc-500 mb-8 leading-relaxed italic"></p>
                 <div class="flex justify-between items-center border-t border-zinc-100 pt-8">
                     <div>
-                        <span id="modalPrice" class="text-3xl font-black text-emerald-700 italic block"></span>
-                        <span class="text-[10px] text-zinc-400 font-bold uppercase">1 Bağ (25'li) Fiyatıdır</span>
+                        <span id="modalBagFiyat" class="text-3xl font-black text-emerald-700 italic block"></span>
+                        <span class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">1 Bağ (25 Adet) Toptan Fiyatı</span>
                     </div>
                     <button id="modalAddBtn" class="bg-zinc-900 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-emerald-600 transition shadow-xl active:scale-90">Bağ Ekle</button>
                 </div>
@@ -68,14 +68,12 @@
         <div class="absolute inset-0 opacity-50 hero-gradient"></div>
         <div class="relative z-10 text-center px-6">
             <h1 class="text-7xl md:text-[10rem] font-black text-white italic tracking-tighter mb-4">HASİRPLAST</h1>
-            <p class="text-emerald-400 text-xl font-bold uppercase tracking-[0.3em] mb-12 italic">Profesyonel Toptan Hasır Sistemleri</p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                <a href="#katalog" class="px-12 py-5 bg-emerald-600 text-white font-black rounded-full shadow-2xl hover:bg-emerald-500 transition-all uppercase tracking-widest text-sm">Ürünleri İncele</a>
-            </div>
+            <p class="text-emerald-400 text-xl font-bold uppercase tracking-[0.3em] mb-12 italic">Bağcılar Toptan Hasır Merkezi</p>
+            <a href="#katalog" class="px-12 py-5 bg-emerald-600 text-white font-black rounded-full shadow-2xl hover:bg-emerald-500 transition-all uppercase tracking-widest text-sm">Ürün Kataloğu</a>
         </div>
     </section>
 
-    <nav class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-40 p-4 border-b text-center md:text-left">
+    <nav class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-40 p-4 border-b">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="text-2xl font-black text-emerald-700 italic tracking-tighter">HASİRPLAST</a>
             <button onclick="toggleSepet()" class="relative group p-2">
@@ -88,20 +86,20 @@
     <section id="katalog" class="py-24 px-4 bg-white">
         <div class="container mx-auto">
             <div class="mb-16 border-l-8 border-emerald-600 pl-6">
-                <h2 class="text-5xl md:text-6xl font-black italic uppercase text-zinc-900 underline decoration-emerald-500">Koleksiyon</h2>
-                <p class="text-zinc-500 italic mt-2 font-bold uppercase text-xs">Satışlarımız 25'li bağlar halindedir.</p>
+                <h2 class="text-5xl md:text-6xl font-black italic uppercase text-zinc-900">Ürünlerimiz</h2>
+                <p class="text-zinc-500 italic mt-2 font-bold uppercase text-xs">Satışlar 25 Adetlik Bağlar Halindedir.</p>
             </div>
             <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"></div>
         </div>
     </section>
 
     <footer class="bg-zinc-900 text-white py-14 text-center">
-        <p onclick="panelGiris()" class="text-[11px] uppercase font-bold cursor-pointer opacity-30 hover:opacity-100 tracking-widest italic tracking-widest italic">© 2026 HASİRPLAST - BAĞCILAR / İSTANBUL</p>
+        <p onclick="panelGiris()" class="text-[11px] uppercase font-bold cursor-pointer opacity-30 hover:opacity-100 tracking-widest italic">© 2026 HASİRPLAST - İSTANBUL</p>
     </footer>
 
     <script>
         const NO = "905336586270";
-        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v3')) || [];
+        let sepet = JSON.parse(localStorage.getItem('hasir_sepet_v4')) || [];
 
         const grid = document.getElementById('productGrid');
         const editor = document.getElementById('productEditorFields');
@@ -111,38 +109,39 @@
                 <div onclick="openProduct(${i})" class="bg-white rounded-[2rem] shadow-xl border border-gray-100 overflow-hidden flex flex-col hover:-translate-y-3 transition duration-500 cursor-pointer group">
                     <div class="h-72 overflow-hidden bg-zinc-200 relative">
                         <img id="prodImg${i}" src="antrasit.jpeg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute bottom-4 left-4 bg-zinc-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase italic">25'li Bağ</div>
+                        <div class="absolute bottom-4 left-4 bg-zinc-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase italic tracking-tighter">25 Adet (1 Bağ)</div>
                     </div>
                     <div class="p-8 flex flex-col items-center text-center">
                         <h3 id="prodName${i}" class="font-black text-xl uppercase italic text-zinc-800 mb-2">Ürün ${i}</h3>
                         <span class="text-emerald-700 font-black text-2xl italic block">₺<span id="prodPrice${i}">0</span></span>
-                        <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest mt-1">Bağ Fiyatı (25 Adet)</span>
+                        <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-widest mt-1 italic">25'li Bağ Toplam Fiyatı</span>
                     </div>
                 </div>`;
             
             editor.innerHTML += `
                 <div class="bg-zinc-800 p-5 rounded-2xl border border-zinc-700 space-y-4">
-                    <span class="text-emerald-400 font-black text-[11px] uppercase tracking-tighter italic">Ürün #${i} (Bağ Ayarı)</span>
+                    <span class="text-emerald-400 font-black text-[11px] uppercase italic tracking-tighter">Ürün #${i} Ayarı</span>
                     <input type="file" accept="image/*" onchange="changeImage(event, ${i})" class="w-full text-[10px] file:bg-emerald-600 file:text-white file:border-0 file:rounded-lg file:px-4 file:py-2">
                     <input type="text" id="inputName${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="Ürün İsmi">
-                    <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="25'li Bağ Fiyatı">
+                    <input type="number" id="inputPrice${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm" placeholder="1 Adet Fiyatı Girin">
+                    <p class="text-[10px] text-zinc-500 italic">* Girdiğiniz fiyat otomatik olarak 25 ile çarpılacaktır.</p>
                     <textarea id="inputDesc${i}" oninput="update(${i})" class="w-full bg-zinc-700 p-3 rounded-xl outline-none text-sm h-24" placeholder="Ürün Açıklaması..."></textarea>
                 </div>`;
         }
 
         function openProduct(i) {
             const name = document.getElementById(`prodName${i}`).innerText;
-            const price = document.getElementById(`prodPrice${i}`).innerText;
+            const priceText = document.getElementById(`prodPrice${i}`).innerText;
             const img = document.getElementById(`prodImg${i}`).src;
-            const desc = localStorage.getItem(`d_${i}`) || "Toptan satışa uygun, 25 adetlik bağlarda paketlenmiş yüksek kalite plastik hasır.";
+            const desc = localStorage.getItem(`d_${i}`) || "Dayanıklı ve antibakteriyel plastik hasır.";
 
             document.getElementById('modalTitle').innerText = name;
-            document.getElementById('modalPrice').innerText = "₺" + price;
+            document.getElementById('modalBagFiyat').innerText = "₺" + priceText;
             document.getElementById('modalImg').src = img;
             document.getElementById('modalDesc').innerText = desc;
             
             document.getElementById('modalAddBtn').onclick = () => {
-                addToCart(name, price, img);
+                addToCart(name, priceText, img);
                 toggleModal();
                 toggleSepet();
             };
@@ -179,7 +178,7 @@
         }
 
         function updateSepet() {
-            localStorage.setItem('hasir_sepet_v3', JSON.stringify(sepet));
+            localStorage.setItem('hasir_sepet_v4', JSON.stringify(sepet));
             document.getElementById('sepetAdet').innerText = sepet.reduce((acc, obj) => acc + obj.qty, 0);
             
             const list = document.getElementById('sepetListesi');
@@ -187,20 +186,19 @@
             list.innerHTML = "";
 
             sepet.forEach((item, index) => {
-                const itemPrice = parseFloat(item.price.replace(',', '.'));
-                total += itemPrice * item.qty;
+                const bagPrice = parseFloat(item.price.replace(',', '.'));
+                total += bagPrice * item.qty;
                 list.innerHTML += `
                     <div class="bg-zinc-50 p-4 rounded-3xl border border-zinc-100 space-y-3">
                         <div class="flex gap-4 items-center">
                             <img src="${item.img}" class="w-16 h-16 object-cover rounded-2xl shadow-sm">
                             <div class="flex-1">
                                 <h4 class="font-black text-sm uppercase italic text-zinc-800 tracking-tighter">${item.name}</h4>
-                                <p class="text-[10px] text-zinc-400 font-bold uppercase italic">Bağ Fiyatı: ₺${item.price}</p>
                             </div>
                             <button onclick="removeFromCart(${index})" class="text-zinc-300 hover:text-red-500 transition text-xl">×</button>
                         </div>
                         <div class="flex items-center justify-between bg-white p-2 rounded-2xl border border-zinc-200">
-                            <span class="text-[9px] font-black uppercase text-zinc-500 pl-2 tracking-widest underline decoration-emerald-500">Bağ Sayısı:</span>
+                            <span class="text-[9px] font-black uppercase text-zinc-500 pl-2">Bağ Sayısı (25'li):</span>
                             <div class="flex items-center gap-2">
                                 <button onclick="miktarButon(${index}, -1)" class="w-8 h-8 flex items-center justify-center bg-zinc-100 rounded-xl hover:bg-zinc-200 transition text-lg font-bold">-</button>
                                 <input type="number" value="${item.qty}" onchange="miktarDegistir(${index}, this.value)" class="w-10 text-center font-black text-zinc-800 bg-transparent outline-none text-xs">
@@ -208,8 +206,8 @@
                             </div>
                         </div>
                         <div class="text-right px-2">
-                             <span class="text-[10px] text-zinc-400 font-bold uppercase italic">Ara Toplam (${item.qty * 25} Adet):</span>
-                             <span class="text-emerald-700 font-black text-sm ml-2">₺${(itemPrice * item.qty).toFixed(2).replace('.', ',')}</span>
+                             <span class="text-[10px] text-zinc-400 font-bold uppercase italic">Ara Toplam:</span>
+                             <span class="text-emerald-700 font-black text-sm ml-2">₺${(bagPrice * item.qty).toFixed(2).replace('.', ',')}</span>
                         </div>
                     </div>`;
             });
@@ -228,7 +226,8 @@
             if(sepet.length === 0) return alert("Sepetiniz boş!");
             let msg = "*HASİRPLAST TOPTAN SİPARİŞ TALEBİ*\n--------------------------\n";
             sepet.forEach((item, index) => {
-                msg += `📦 *${item.name}*\n   - Miktar: ${item.qty} Bağ (${item.qty * 25} Adet)\n   - Birim (Bağ): ₺${item.price}\n   - Toplam: ₺${(parseFloat(item.price.replace(',','.')) * item.qty).toFixed(2)}\n\n`;
+                const bagPrice = parseFloat(item.price.replace(',','.'));
+                msg += `📦 *${item.name}*\n   - Miktar: ${item.qty} Bağ (${item.qty * 25} Adet)\n   - Toplam: ₺${(bagPrice * item.qty).toFixed(2)}\n\n`;
             });
             msg += `--------------------------\n💰 *GENEL TOPLAM:* ${document.getElementById('sepetToplam').innerText}\n\n*Bağcılar / İstanbul Şubesi*`;
             window.open(`https://api.whatsapp.com/send?phone=${NO}&text=${encodeURIComponent(msg)}`, '_blank');
@@ -248,13 +247,17 @@
 
         function update(i) {
             let n = document.getElementById(`inputName${i}`).value;
-            let p = document.getElementById(`inputPrice${i}`).value;
+            let p = document.getElementById(`inputPrice${i}`).value; // 1 Adet fiyatı
             let d = document.getElementById(`inputDesc${i}`).value;
-            let f = parseFloat(p || 0).toFixed(2).replace('.', ',');
+            
+            // Otomatik 25 ile çarpma işlemi
+            let bagFiyati = (parseFloat(p || 0) * 25).toFixed(2).replace('.', ',');
+            
             document.getElementById(`prodName${i}`).innerText = n;
-            document.getElementById(`prodPrice${i}`).innerText = f;
+            document.getElementById(`prodPrice${i}`).innerText = bagFiyati;
+            
             localStorage.setItem(`n_${i}`, n);
-            localStorage.setItem(`p_${i}`, f);
+            localStorage.setItem(`p_${i}`, bagFiyati);
             localStorage.setItem(`d_${i}`, d);
         }
 
@@ -265,15 +268,17 @@
         window.onload = () => {
             updateSepet();
             for(let i=1; i<=8; i++) {
-                let n = localStorage.getItem(`n_${i}`) || "Premium Hasır";
-                let p = localStorage.getItem(`p_${i}`) || "250,00";
+                let n = localStorage.getItem(`n_${i}`) || "Toptan Hasır";
+                let p = localStorage.getItem(`p_${i}`) || "0,00";
                 let img = localStorage.getItem(`img_${i}`) || "antrasit.jpeg";
                 let d = localStorage.getItem(`d_${i}`) || "";
                 document.getElementById(`prodName${i}`).innerText = n;
                 document.getElementById(`prodPrice${i}`).innerText = p;
                 document.getElementById(`prodImg${i}`).src = img;
                 document.getElementById(`inputName${i}`).value = n;
-                document.getElementById(`inputPrice${i}`).value = p.replace(',00', '').replace(',', '.');
+                // Panelde 1 adet fiyatını görmek için geri bölüyoruz
+                let unitPrice = (parseFloat(p.replace(',','.')) / 25).toFixed(2);
+                document.getElementById(`inputPrice${i}`).value = isNaN(unitPrice) ? 0 : unitPrice;
                 document.getElementById(`inputDesc${i}`).value = d;
             }
         };
