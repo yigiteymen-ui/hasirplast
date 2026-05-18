@@ -20,14 +20,12 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; scroll-behavior: smooth; overflow-x: hidden; }
         .admin-gizli { display: none !important; }
         
-        /* Arka plan filigran */
         .bg-watermark {
             position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
             font-size: 14vw; font-weight: 900; color: rgba(0, 0, 0, 0.02);
             white-space: nowrap; z-index: -1; pointer-events: none; text-transform: uppercase; font-style: italic;
         }
 
-        /* Ürün Kartı Dinamikleri */
         .product-card { 
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
             border-radius: 2.5rem; background: white; border: 1px solid #f0f0f0; 
@@ -47,18 +45,14 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08); 
         }
         
-        /* SEO Alanı Stilleri - İsteğinize Göre Kutusuz ve Daha Uzun */
         .seo-section { background: #f8fafc; border-top: 1px solid #e2e8f0; }
-        .seo-text-container { 
-            font-size: 16px; line-height: 2.2; color: #475569; font-style: italic; font-weight: 500; text-align: justify;
-        }
         
+        /* SEO Yazı Stili - Kutucuklar Kaldırıldı */
         .seo-grid-item { 
-            font-size: 11px; font-weight: 700; color: #64748b; transition: all 0.3s ease; 
-            cursor: pointer; display: inline-block; padding: 6px 12px; border: 1px solid #e2e8f0; border-radius: 10px;
-            background: white;
+            font-size: 12px; font-weight: 600; color: #94a3b8; transition: all 0.3s ease; 
+            display: inline;
         }
-        .seo-grid-item:hover { color: #10b981; border-color: #10b981; transform: translateY(-2px); }
+        .seo-grid-item:hover { color: #10b981; }
         
         .full-detail-view { position: fixed; inset: 0; background: white; z-index: 2000; display: none; overflow-y: auto; }
         .full-detail-active { display: block !important; }
@@ -76,7 +70,6 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
 
-        /* Switch Buton Stili - PANEL FIX */
         .pricing-toggle {
             display: flex; background: #f4f4f5; padding: 4px; border-radius: 14px; gap: 4px; border: 1px solid #e4e4e7;
         }
@@ -84,7 +77,7 @@
             flex: 1; padding: 10px 18px; border-radius: 10px; font-size: 10px; font-weight: 800;
             text-transform: uppercase; transition: all 0.2s; color: #a1a1aa;
         }
-        .pricing-toggle button.active { background: white; color: #059669; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .pricing-toggle button.active { background: white; color: #059669; shadow: 0 2px 4px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -139,60 +132,42 @@
         </div>
     </main>
 
-    <section class="seo-section py-32 px-6">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-24">
-                <div class="seo-text-container">
-                    <p class="mb-6">HASİRPLAST, plastik hasır ve suni çim halı endüstrisinde yarım asra yaklaşan üretim disiplini ve teknolojik inovasyon yatırımlarıyla Türkiye'nin global yüzü olmaya devam etmektedir. İstanbul Bağcılar'da bulunan entegre üretim tesislerimizde, ham maddeden nihai ürüne kadar her aşama yüksek hassasiyetle yönetilmekte; polimer teknolojisinin en güncel imkanları kullanılarak dış mekan dayanımı en üst seviyeye çıkarılmış ürünler dokunmaktadır. Plastik hasır modellerimiz, UV-8 stabilizatör katkılı ham maddesi sayesinde güneşin en dik geldiği bölgelerde dahi renk formunu korurken, özel örgü yapısı ile suyun ve tozun hapsolmasını engelleyerek hijyenik bir kullanım sunar.</p>
-                    
-                    <p class="mb-6">Suni çim halı kategorisinde, doğal çim dokusunu birebir taklit eden yumuşak yüzey teknolojisi ve drenaj kanallı taban yapısı ile balkonlardan spor sahalarına kadar geniş bir uygulama alanı sunuyoruz. Fabrikadan doğrudan satış stratejimiz, sadece ekonomik bir avantaj değil, aynı zamanda müşterilerimize teknik destek ve butik üretim imkanları da sağlamaktadır. Ürün yelpazemizde yer alan dekoratif plastik kilimler ve matlar, modern estetik anlayışını endüstriyel dayanıklılıkla birleştirerek hem iç hem dış mekan tasarımlarında vazgeçilmez birer zemin çözümü haline gelmiştir. 81 ile yayılan lojistik ağımız ve sigortalı sevkiyat seçeneklerimizle, toptan alımlarda hızı ve güveni aynı anda tesis ediyoruz.</p>
-                    
-                    <p class="mb-6">Zemin çözümlerimiz sadece fiziksel bir kaplama değil; sürdürülebilirlik ilkelerimiz gereği çevre dostu ham maddelerle üretilen uzun ömürlü yatırım araçlarıdır. Cami hasırı, bahçe çimi, piknik matı ve balkon kaplamaları gibi özelleşmiş alanlarda markamıza duyulan güvenin temelinde, her metrede değişmeyen kalite standardımız ve satış sonrası kesintisiz desteğimiz yatmaktadır. Polipropilen ve polietilen tabanlı dokuma tekniklerimizde, aşınma katsayısını minimize eden özel bitiş işlemleri uygulanmaktadır. Bu sayede HASİRPLAST ürünleri, yoğun yaya trafiğinin olduğu kamusal alanlarda dahi yıllarca ilk günkü formunu korumaktadır.</p>
-
-                    <p>Global pazarda rekabet eden bir yerli üretici olarak, AR-GE çalışmalarımızda "akıllı zemin" konseptlerine odaklanıyor, antibakteriyel özellikli ve kolay dezenfekte edilebilir yüzeyler geliştiriyoruz. Özellikle pandemi sonrası dönemde önemi artan hijyenik zemin ihtiyacını, plastik hasırlarımızın gözeneksiz yapısı ile mükemmel şekilde karşılıyoruz. İster bireysel bir balkon dekorasyonu olsun, ister binlerce metrekarelik endüstriyel bir proje; HASİRPLAST her zaman en teknik, en estetik ve en ekonomik çözümün adresidir.</p>
-                </div>
-                <div class="bg-white p-10 rounded-[3rem] shadow-sm border">
-                    <h3 class="text-xl font-black italic uppercase mb-6 border-b pb-4">Neden Hasırplast?</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-4 font-bold text-sm text-zinc-600"><i class="fa-solid fa-check text-emerald-500"></i> UV Katkılı ve Solmaz Hammadde Teknolojisi</li>
-                        <li class="flex items-center gap-4 font-bold text-sm text-zinc-600"><i class="fa-solid fa-check text-emerald-500"></i> Su Geçirmez, Kolay Temizlenir ve Hijyeniktir</li>
-                        <li class="flex items-center gap-4 font-bold text-sm text-zinc-600"><i class="fa-solid fa-check text-emerald-500"></i> 81 İle Sigortalı ve Hızlı Ambar Sevkiyatı</li>
-                        <li class="flex items-center gap-4 font-bold text-sm text-zinc-600"><i class="fa-solid fa-check text-emerald-500"></i> Toptan ve Perakende En İyi Fiyat Garantisi</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="text-center mb-12">
+    <section class="seo-section py-24 px-6">
+        <div class="container mx-auto text-center">
+            <div class="mb-12">
                 <span class="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-4 inline-block">Hızlı Arama Dizini</span>
-                <h3 class="text-3xl font-black italic uppercase tracking-tight">Bölgelere Göre <span class="text-emerald-500">Hizmet Ağımız</span></h3>
+                <h3 class="text-3xl font-black italic uppercase tracking-tight">Hizmet <span class="text-emerald-500">Ağımız</span></h3>
             </div>
-            <div id="bigSEOGrid" class="flex flex-wrap justify-center gap-3"></div>
+            <div id="bigSEOGrid" class="max-w-5xl mx-auto leading-relaxed text-center"></div>
         </div>
     </section>
 
     <footer class="bg-[#0a0a0a] text-white pt-24 pb-12 px-6">
-        <div class="container mx-auto text-center md:text-left">
+        <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-20">
                 <div>
-                    <div class="flex items-center gap-3 mb-8 justify-center md:justify-start">
+                    <div class="flex items-center gap-3 mb-8">
                         <h2 class="text-3xl font-black italic uppercase tracking-tighter">HASİR<span class="text-emerald-500">PLAST</span></h2>
                     </div>
-                    <p class="text-zinc-500 text-sm font-semibold leading-relaxed italic mx-auto md:mx-0 max-w-md">
+                    <p class="text-zinc-500 text-sm font-semibold leading-relaxed italic max-w-md">
                         Bağcılar'daki üretim tesisimizde, modern dokuma teknolojileri ve yüksek kalite standartları ile zemin çözümleri sunuyoruz. Plastik hasır, suni çim ve dekoratif kilimlerde dayanıklılığın adı.
                     </p>
                 </div>
-                <div class="flex flex-col items-center md:items-end justify-center">
-                    <h3 class="text-emerald-500 font-black text-xs uppercase tracking-widest mb-6 italic">Fabrika İletişim</h3>
-                    <div class="space-y-4 text-center md:text-right">
-                        <p class="text-zinc-400 text-sm font-bold">İnönü Mah. 359. Sk, No: 12, Bağcılar/İstanbul</p>
-                        <a href="https://wa.me/905336586270" class="flex items-center gap-4 group justify-center md:justify-end">
+                <div>
+                    <h3 class="text-emerald-500 font-black text-xs uppercase tracking-widest mb-8 italic">Merkez & Fabrika</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-location-dot text-emerald-500 mt-1"></i>
+                            <p class="text-zinc-400 text-sm font-bold">İnönü Mah. 359. Sk, No: 12, Bağcılar/İstanbul</p>
+                        </div>
+                        <a href="https://wa.me/905336586270" class="flex items-center gap-4 group">
                             <i class="fa-solid fa-phone text-emerald-500"></i>
                             <p class="text-2xl font-black tracking-tighter uppercase italic group-hover:text-emerald-500 transition-colors">0533 658 62 70</p>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="pt-12 border-t border-zinc-900">
+                </div>
+            <div class="pt-12 border-t border-zinc-900 text-center">
                 <p class="text-zinc-700 text-[10px] font-black tracking-[0.4em] uppercase">© 2026 HASİRPLAST - ENDÜSTRİYEL ZEMİN ÇÖZÜMLERİ | TÜM HAKLARI SAKLIDIR</p>
             </div>
         </div>
@@ -200,7 +175,7 @@
 
     <div id="adminPanel" class="fixed inset-y-0 left-0 w-[400px] bg-white shadow-2xl p-8 z-[3000] admin-gizli border-r overflow-y-auto">
         <div class="flex justify-between items-center mb-10 border-b pb-6">
-            <h3 class="font-black text-lg italic text-zinc-900 uppercase">Panel <span class="text-emerald-500">v6.1</span></h3>
+            <h3 class="font-black text-lg italic text-zinc-900 uppercase">Panel <span class="text-emerald-500">v6.0</span></h3>
             <button onclick="adminCikis()" class="text-zinc-400 hover:text-black font-black uppercase text-xs">Kapat</button>
         </div>
         <div id="adminFields" class="space-y-8"></div>
@@ -209,7 +184,7 @@
     <div id="sepetOverlay" onclick="toggleSepet(false)" class="fixed inset-0 bg-black/60 z-[1000] hidden backdrop-blur-md"></div>
     <div id="sepetSidebar" class="fixed inset-y-0 right-0 w-full md:w-[480px] bg-white z-[1100] translate-x-full transition-transform duration-700 flex flex-col shadow-2xl">
         <div class="p-10 border-b flex justify-between items-center bg-zinc-50">
-            <h3 class="text-2xl font-black italic uppercase italic">Teklif <span class="text-emerald-500">Listesi</span></h3>
+            <h3 class="text-2xl font-black italic uppercase">Teklif <span class="text-emerald-500">Listesi</span></h3>
             <button onclick="toggleSepet(false)" class="text-3xl font-light">×</button>
         </div>
         <div id="sepetListesi" class="flex-1 overflow-y-auto p-10 space-y-6"></div>
@@ -337,8 +312,11 @@
             const data = JSON.parse(localStorage.getItem(`hasir_v6_data_${i}`));
             const artis = data.unitType === 'adet' ? 25 : 1;
             const existingIdx = sepet.findIndex(s => s.id === i);
-            if(existingIdx > -1) { sepet[existingIdx].qty += artis; }
-            else { sepet.push({ id: i, name: data.name, price: data.price, qty: artis, unit: data.unitType }); }
+            if(existingIdx > -1) {
+                sepet[existingIdx].qty += artis;
+            } else {
+                sepet.push({ id: i, name: data.name, price: data.price, qty: artis, unit: data.unitType });
+            }
             sepetGuncelle();
             toggleSepet(true);
         }
@@ -397,7 +375,9 @@
             cards.forEach(card => {
                 const title = card.querySelector('h3').innerText.toLowerCase();
                 const desc = card.querySelector('p[id^="desc_short"]').innerText.toLowerCase();
-                card.style.display = (title.includes(query) || desc.includes(query)) ? "flex" : "none";
+                if(title.includes(query) || desc.includes(query)) {
+                    card.style.display = "flex";
+                } else { card.style.display = "none"; }
             });
         }
 
@@ -440,11 +420,12 @@
             }
         }
 
+        // SEO Link Oluşturucu - Düz Metin Formatı
         const locs = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Kocaeli", "Bağcılar", "İkitelli", "Hadımköy", "Esenyurt", "Gaziantep", "Konya", "Kayseri", "Adana", "Mersin"];
         const cats = ["Plastik Hasır Fabrikası", "Suni Çim Üreticisi", "Toptan Kilim Satış", "Plastik Mat Fiyatları", "Zemin Hasırı Modelleri", "Piknik Matı Üretimi", "Bahçe Çiti Hasır", "Ucuz Hasır Halı", "Cami Hasırı"];
-        let seoStr = "";
-        locs.forEach(l => cats.forEach(c => seoStr += `<span class="seo-grid-item">${l} ${c}</span>`));
-        document.getElementById('bigSEOGrid').innerHTML = seoStr;
+        let seoArray = [];
+        locs.forEach(l => cats.forEach(c => seoArray.push(`<span class="seo-grid-item">${l} ${c}</span>`)));
+        document.getElementById('bigSEOGrid').innerHTML = seoArray.join(' • '); // Kelimeler arasına nokta koyarak düzleştirildi
 
         window.onload = () => { initApp(); sepetGuncelle(); };
     </script>
