@@ -9,8 +9,6 @@
     <meta name="keywords" content="plastik hasır, suni çim halı, dekoratif kilim, plastik kilim, hasır mat, piknik matı, cami hasırı, balkon hasırı, bahçe çim halı, ucuz suni çim, toptan hasır, hasır fabrikası, istanbul hasır üreticisi, hasırplast fiyatları, yer döşemesi, dış mekan halısı, ıslak zemin matı, plastik örgü halı, dekoratif zemin çözümleri">
     <meta name="author" content="HASİRPLAST">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="HASİRPLAST | Endüstriyel Zemin Çözümleri">
-    <meta property="og:description" content="Fabrikadan direkt satış avantajıyla en kaliteli plastik hasır ve suni çim ürünleri.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -47,8 +45,12 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08); 
         }
         
-        /* SEO Alanı Stilleri */
+        /* SEO Alanı Stilleri - Kutusuz ve Akıcı Yapı */
         .seo-section { background: #f8fafc; border-top: 1px solid #e2e8f0; }
+        .seo-text-block { 
+            font-size: 16px; line-height: 2.2; color: #475569; font-style: italic; font-weight: 500; text-align: justify;
+        }
+        
         .seo-grid-item { 
             font-size: 11px; font-weight: 700; color: #64748b; transition: all 0.3s ease; 
             cursor: pointer; display: inline-block; padding: 6px 12px; border: 1px solid #e2e8f0; border-radius: 10px;
@@ -72,7 +74,6 @@
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
 
-        /* Switch Buton Stili - PANEL FIX */
         .pricing-toggle {
             display: flex; background: #f4f4f5; padding: 4px; border-radius: 14px; gap: 4px; border: 1px solid #e4e4e7;
         }
@@ -80,7 +81,7 @@
             flex: 1; padding: 10px 18px; border-radius: 10px; font-size: 10px; font-weight: 800;
             text-transform: uppercase; transition: all 0.2s; color: #a1a1aa;
         }
-        .pricing-toggle button.active { background: white; color: #059669; shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .pricing-toggle button.active { background: white; color: #059669; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -130,8 +131,7 @@
                 <p id="searchStatus" class="text-zinc-400 font-extrabold uppercase tracking-[0.5em] text-xs italic">Plastik Hasır • Kilim • Suni Çim Halı Fabrikası</p>
             </div>
 
-            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-                </div>
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"></div>
         </div>
     </main>
 
@@ -139,10 +139,12 @@
         <div class="container mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-24">
                 <div>
-                    <h2 class="text-4xl font-black italic uppercase mb-8 leading-tight">Plastik Hasır ve Suni Çim Halıda <br><span class="text-emerald-500">Sektörün Lider Üreticisi</span></h2>
-                    <div class="prose prose-zinc italic text-zinc-500 font-medium space-y-4">
-                        <p>HASİRPLAST olarak, plastik hasır ve suni çim halı üretiminde 20 yılı aşkın tecrübemizle İstanbul Bağcılar'daki modern tesislerimizde zemin çözümleri sunuyoruz. Üretim sürecimizde kullandığımız %100 orijinal ve UV katkılı hammaddeler sayesinde ürünlerimiz güneş ışınlarına, suya ve yoğun kullanıma karşı maksimum direnç gösterir.</p>
-                        <p>Plastik hasır modellerimiz; balkon, bahçe, piknik alanları ve camiler için özel olarak tasarlanmıştır. Suni çim halı koleksiyonumuz ise peyzaj, spor alanları ve dekoratif amaçlı geniş bir kullanım yelpazesine sahiptir. Fabrikadan direkt satış modelimiz ile aracıları ortadan kaldırıyor, en kaliteli ürünü en uygun fiyatla kapınıza getiriyoruz.</p>
+                    <div class="seo-text-block">
+                        <p class="mb-6">HASİRPLAST, plastik hasır ve suni çim halı endüstrisinde yarım asra yaklaşan üretim disiplini ve teknolojik inovasyon yatırımlarıyla Türkiye'nin global yüzü olmaya devam etmektedir. İstanbul Bağcılar'da bulunan entegre üretim tesislerimizde, ham maddeden nihai ürüne kadar her aşama yüksek hassasiyetle yönetilmekte; polimer teknolojisinin en güncel imkanları kullanılarak dış mekan dayanımı en üst seviyeye çıkarılmış ürünler dokunmaktadır. Plastik hasır modellerimiz, UV-8 stabilizatör katkılı ham maddesi sayesinde güneşin en dik geldiği bölgelerde dahi renk formunu korurken, özel örgü yapısı ile suyun ve tozun hapsolmasını engelleyerek hijyenik bir kullanım sunar.</p>
+                        
+                        <p class="mb-6">Suni çim halı kategorisinde, doğal çim dokusunu birebir taklit eden yumuşak yüzey teknolojisi ve drenaj kanallı taban yapısı ile balkonlardan spor sahalarına kadar geniş bir uygulama alanı sunuyoruz. Fabrikadan doğrudan satış stratejimiz, sadece ekonomik bir avantaj değil, aynı zamanda müşterilerimize teknik destek ve butik üretim imkanları da sağlamaktadır. Ürün yelpazemizde yer alan dekoratif plastik kilimler ve matlar, modern estetik anlayışını endüstriyel dayanıklılıkla birleştirerek hem iç hem dış mekan tasarımlarında vazgeçilmez birer zemin çözümü haline gelmiştir. 81 ile yayılan lojistik ağımız ve sigortalı sevkiyat seçeneklerimizle, toptan alımlarda hızı ve güveni aynı anda tesis ediyoruz.</p>
+                        
+                        <p>Zemin çözümlerimiz sadece fiziksel bir kaplama değil; sürdürülebilirlik ilkelerimiz gereği çevre dostu ham maddelerle üretilen uzun ömürlü yatırım araçlarıdır. Cami hasırı, bahçe çimi, piknik matı ve balkon kaplamaları gibi özelleşmiş alanlarda markamıza duyulan güvenin temelinde, her metrede değişmeyen kalite standardımız ve satış sonrası kesintisiz desteğimiz yatmaktadır. HASİRPLAST olarak, evsel kullanımın ötesinde endüstriyel projeler, oteller, belediye park ve bahçeleri için teknik şartnamelere uygun, yüksek aşınma dirençli ve alev geciktirici özellikli opsiyonel üretimler yaparak çözüm ortaklığımızı global ölçekte genişletiyoruz.</p>
                     </div>
                 </div>
                 <div class="bg-white p-10 rounded-[3rem] shadow-sm border">
@@ -166,7 +168,7 @@
 
     <footer class="bg-[#0a0a0a] text-white pt-24 pb-12 px-6">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-20 mb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-20">
                 <div>
                     <div class="flex items-center gap-3 mb-8">
                         <h2 class="text-3xl font-black italic uppercase tracking-tighter">HASİR<span class="text-emerald-500">PLAST</span></h2>
@@ -188,16 +190,7 @@
                         </a>
                     </div>
                 </div>
-                <div>
-                    <h3 class="text-emerald-500 font-black text-xs uppercase tracking-widest mb-8 italic">Hızlı Kategoriler</h3>
-                    <ul class="space-y-4 text-zinc-400 text-sm font-bold">
-                        <li class="hover:text-emerald-500 cursor-pointer italic">✓ Suni Çim Halı Fiyatları</li>
-                        <li class="hover:text-emerald-500 cursor-pointer italic">✓ Plastik Hasır Üreticileri</li>
-                        <li class="hover:text-emerald-500 cursor-pointer italic">✓ Toptan Kilim ve Mat Satışı</li>
-                        <li class="hover:text-emerald-500 cursor-pointer italic">✓ Balkon ve Bahçe Zemin Kaplama</li>
-                    </ul>
                 </div>
-            </div>
             <div class="pt-12 border-t border-zinc-900 text-center">
                 <p class="text-zinc-700 text-[10px] font-black tracking-[0.4em] uppercase">© 2026 HASİRPLAST - ENDÜSTRİYEL ZEMİN ÇÖZÜMLERİ | TÜM HAKLARI SAKLIDIR</p>
             </div>
@@ -215,7 +208,7 @@
     <div id="sepetOverlay" onclick="toggleSepet(false)" class="fixed inset-0 bg-black/60 z-[1000] hidden backdrop-blur-md"></div>
     <div id="sepetSidebar" class="fixed inset-y-0 right-0 w-full md:w-[480px] bg-white z-[1100] translate-x-full transition-transform duration-700 flex flex-col shadow-2xl">
         <div class="p-10 border-b flex justify-between items-center bg-zinc-50">
-            <h3 class="text-2xl font-black italic uppercase italic">Teklif <span class="text-emerald-500">Listesi</span></h3>
+            <h3 class="text-2xl font-black italic uppercase">Teklif <span class="text-emerald-500">Listesi</span></h3>
             <button onclick="toggleSepet(false)" class="text-3xl font-light">×</button>
         </div>
         <div id="sepetListesi" class="flex-1 overflow-y-auto p-10 space-y-6"></div>
@@ -308,29 +301,23 @@
                             </div>
                         </div>
                         <input type="file" onchange="fotoGuncelle(${i}, this)" class="w-full text-[10px] font-bold text-zinc-400">
-                        <input type="text" id="in_name${i}" value="${savedData.name}" oninput="kaydet(${i})" placeholder="Ürün Adı" class="w-full p-4 rounded-xl border-none shadow-inner text-xs font-bold outline-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-emerald-500">
-                        <input type="number" id="in_price${i}" value="${savedData.price}" oninput="kaydet(${i})" placeholder="Birim Fiyat" class="w-full p-4 rounded-xl border-none shadow-inner text-xs font-bold outline-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-emerald-500">
-                        <textarea id="in_desc${i}" oninput="kaydet(${i})" placeholder="SEO Uyumlu Açıklama" class="w-full p-4 rounded-xl border-none shadow-inner text-xs font-bold h-24 outline-none ring-1 ring-zinc-200 focus:ring-2 focus:ring-emerald-500">${savedData.desc}</textarea>
+                        <input type="text" id="in_name${i}" value="${savedData.name}" oninput="kaydet(${i})" class="w-full p-4 rounded-xl text-xs font-bold ring-1 ring-zinc-200">
+                        <input type="number" id="in_price${i}" value="${savedData.price}" oninput="kaydet(${i})" class="w-full p-4 rounded-xl text-xs font-bold ring-1 ring-zinc-200">
+                        <textarea id="in_desc${i}" oninput="kaydet(${i})" class="w-full p-4 rounded-xl text-xs font-bold h-24 ring-1 ring-zinc-200">${savedData.desc}</textarea>
                     </div>`;
             }
         }
 
-        // PANEL FIX: Bu fonksiyon sayesinde veriler kaybolmadan sadece ilgili buton güncellenir
         function unitUpdate(i, type) {
-            const nameV = document.getElementById(`in_name${i}`).value;
-            const priceV = document.getElementById(`in_price${i}`).value;
-            const descV = document.getElementById(`in_desc${i}`).value;
-            
-            const data = { name: nameV, price: parseFloat(priceV) || 0, desc: descV, unitType: type };
+            const data = JSON.parse(localStorage.getItem(`hasir_v6_data_${i}`)) || {};
+            data.unitType = type;
             localStorage.setItem(`hasir_v6_data_${i}`, JSON.stringify(data));
             initApp(); 
         }
 
         function kaydet(i) {
-            // Birim tipini mevcut elementlerin class'ından çekiyoruz ki kaybolmasın
             const activeBtn = document.querySelector(`#adminFields > div:nth-child(${i}) .pricing-toggle .active`);
             const type = activeBtn.innerText.toLowerCase().includes('adet') ? 'adet' : 'm2';
-            
             const data = {
                 name: document.getElementById(`in_name${i}`).value,
                 price: parseFloat(document.getElementById(`in_price${i}`).value) || 0,
@@ -338,22 +325,16 @@
                 unitType: type
             };
             localStorage.setItem(`hasir_v6_data_${i}`, JSON.stringify(data));
-            
             document.getElementById(`name${i}`).innerText = data.name;
             document.getElementById(`priceText${i}`).innerText = data.price.toLocaleString();
-            document.getElementById(`desc_short${i}`).innerText = data.desc;
         }
 
-        // Sepet ve Diğer Fonksiyonlar
         function sepeteEkle(i) {
             const data = JSON.parse(localStorage.getItem(`hasir_v6_data_${i}`));
             const artis = data.unitType === 'adet' ? 25 : 1;
             const existingIdx = sepet.findIndex(s => s.id === i);
-            if(existingIdx > -1) {
-                sepet[existingIdx].qty += artis;
-            } else {
-                sepet.push({ id: i, name: data.name, price: data.price, qty: artis, unit: data.unitType });
-            }
+            if(existingIdx > -1) { sepet[existingIdx].qty += artis; }
+            else { sepet.push({ id: i, name: data.name, price: data.price, qty: artis, unit: data.unitType }); }
             sepetGuncelle();
             toggleSepet(true);
         }
@@ -366,56 +347,29 @@
             sepet.forEach((item, idx) => {
                 const subTotal = item.price * item.qty;
                 total += subTotal;
-                list.innerHTML += `
-                    <div class="bg-zinc-50 p-6 rounded-3xl border border-zinc-100 flex flex-col gap-4 shadow-sm">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-black text-xs uppercase italic max-w-[200px] leading-tight">${item.name}</h4>
-                            <button onclick="degistir(${idx}, -999999)" class="text-zinc-300 hover:text-red-500">×</button>
-                        </div>
-                        <div class="flex justify-between items-end">
-                            <div class="flex items-center gap-3 bg-white p-2 rounded-xl border border-zinc-100">
-                                <button onclick="degistir(${idx}, -${item.unit === 'adet' ? 25 : 1})" class="w-8 h-8 font-black">-</button>
-                                <span class="text-[11px] font-black">${item.qty} ${item.unit === 'adet' ? 'Adet' : 'm²'}</span>
-                                <button onclick="degistir(${idx}, ${item.unit === 'adet' ? 25 : 1})" class="w-8 h-8 font-black">+</button>
-                            </div>
-                            <span class="font-black text-emerald-600 text-lg italic">₺${subTotal.toLocaleString()}</span>
-                        </div>
-                    </div>`;
+                list.innerHTML += `<div class="bg-zinc-50 p-6 rounded-3xl border border-zinc-100 mb-4"><h4 class="font-black text-xs uppercase">${item.name}</h4><div class="flex justify-between mt-2"><span class="text-[11px] font-black">${item.qty} ${item.unit}</span><span class="font-black text-emerald-600">₺${subTotal.toLocaleString()}</span></div></div>`;
             });
             document.getElementById('sepetAdet').innerText = sepet.length;
             document.getElementById('genelToplam').innerText = total.toLocaleString();
         }
 
-        function degistir(i, val) {
-            sepet[i].qty += val;
-            if(sepet[i].qty <= 0) sepet.splice(i, 1);
-            sepetGuncelle();
-        }
-
         function toggleSepet(s) {
             document.getElementById('sepetSidebar').style.transform = s ? 'translateX(0%)' : 'translateX(100%)';
             document.getElementById('sepetOverlay').classList.toggle('hidden', !s);
-            document.body.style.overflow = s ? 'hidden' : 'auto';
         }
 
         function whatsappGonder() {
-            if(sepet.length === 0) return alert("Liste boş!");
-            let msg = "*HASİRPLAST FABRİKA TEKLİF TALEBİ*\n--------------------------\n";
-            sepet.forEach(i => { msg += `📦 *${i.name}*\nMiktar: ${i.qty} ${i.unit === 'adet' ? 'Adet' : 'm²'}\nBirim: ₺${i.price}\n\n`; });
-            msg += `--------------------------\n*TOPLAM: ₺${document.getElementById('genelToplam').innerText}*`;
+            let msg = "*HASİRPLAST FABRİKA TEKLİF TALEBİ*\n";
+            sepet.forEach(i => { msg += `📦 *${i.name}* - ${i.qty} ${i.unit}\n`; });
             window.open(`https://wa.me/905336586270?text=${encodeURIComponent(msg)}`);
         }
 
         function siteAra() {
             const query = document.getElementById('siteSearch').value.toLowerCase();
             const cards = document.querySelectorAll('.product-card');
-            let found = 0;
             cards.forEach(card => {
                 const title = card.querySelector('h3').innerText.toLowerCase();
-                const desc = card.querySelector('p[id^="desc_short"]').innerText.toLowerCase();
-                if(title.includes(query) || desc.includes(query)) {
-                    card.style.display = "flex"; found++;
-                } else { card.style.display = "none"; }
+                card.style.display = title.includes(query) ? "flex" : "none";
             });
         }
 
@@ -424,26 +378,16 @@
             document.getElementById('d_img').src = document.getElementById(`img${i}`).src;
             document.getElementById('d_name').innerText = data.name;
             document.getElementById('d_desc').innerText = data.desc;
-            document.getElementById('d_type').innerText = data.unitType === 'adet' ? 'Adet Bazlı Üretim' : 'Metrekare Bazlı Üretim';
             document.getElementById('d_price').innerText = data.price.toLocaleString();
-            document.getElementById('d_add_btn').onclick = () => { sepeteEkle(i); closeDetail(); };
             document.getElementById('fullDetail').classList.add('full-detail-active');
-            document.body.style.overflow = "hidden";
         }
 
-        function closeDetail() {
-            document.getElementById('fullDetail').classList.remove('full-detail-active');
-            document.body.style.overflow = "auto";
-        }
-
+        function closeDetail() { document.getElementById('fullDetail').classList.remove('full-detail-active'); }
         function adminCikis() { document.getElementById('adminPanel').classList.add('admin-gizli'); }
         
         document.addEventListener('keydown', e => {
-            if (e.ctrlKey && e.key === 'p') {
-                e.preventDefault();
-                if(prompt("Erişim Şifresi:") === "nmkhasir") {
-                    document.getElementById('adminPanel').classList.remove('admin-gizli');
-                }
+            if (e.ctrlKey && e.key === 'p' && prompt("Erişim Şifresi:") === "nmkhasir") {
+                document.getElementById('adminPanel').classList.remove('admin-gizli');
             }
         });
 
@@ -458,9 +402,9 @@
             }
         }
 
-        // SEO Link Oluşturucu - Zengin ve Uzun İçerik
-        const locs = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Kocaeli", "Bağcılar", "İkitelli", "Hadımköy", "Esenyurt", "Gaziantep", "Konya", "Kayseri", "Adana", "Mersin"];
-        const cats = ["Plastik Hasır Fabrikası", "Suni Çim Üreticisi", "Toptan Kilim Satış", "Plastik Mat Fiyatları", "Zemin Hasırı Modelleri", "Piknik Matı Üretimi", "Bahçe Çiti Hasır", "Ucuz Hasır Halı", "Cami Hasırı"];
+        // SEO Bölge Listesi
+        const locs = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Kocaeli", "Bağcılar", "Gaziantep", "Konya", "Mersin"];
+        const cats = ["Hasır Fabrikası", "Suni Çim Üreticisi", "Toptan Kilim", "Balkon Hasırı"];
         let seoStr = "";
         locs.forEach(l => cats.forEach(c => seoStr += `<span class="seo-grid-item">${l} ${c}</span>`));
         document.getElementById('bigSEOGrid').innerHTML = seoStr;
