@@ -13,7 +13,6 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfc; scroll-behavior: smooth; }
         .admin-gizli { display: none !important; }
         
-        /* Arkaplan Opak Logo */
         .bg-watermark {
             position: absolute;
             top: 15%;
@@ -37,17 +36,39 @@
         
         .seo-grid-item { font-size: 10px; font-weight: 600; color: #94a3b8; transition: color 0.2s; cursor: default; }
         .seo-grid-item:hover { color: #10b981; }
-        .seo-section-title { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #10b981; margin-bottom: 2rem; display: block; letter-spacing: 0.2em; border-left: 3px solid #10b981; padding-left: 10px; }
         
         .full-detail-view { position: fixed; inset: 0; background: white; z-index: 2000; display: none; overflow-y: auto; }
         .full-detail-active { display: block !important; }
         
-        /* Footer Özel Stil */
         .footer-content { color: #888; font-size: 13px; line-height: 1.6; }
         .footer-heading { color: #10b981; font-weight: 800; font-size: 11px; margin-bottom: 15px; letter-spacing: 1px; }
+
+        /* Sabit WhatsApp Butonu */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .whatsapp-fixed:hover { transform: scale(1.1) rotate(5deg); }
     </style>
 </head>
 <body class="overflow-x-hidden">
+
+    <a href="https://wa.me/905336586270" target="_blank" class="whatsapp-fixed">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <header class="fixed top-0 inset-x-0 z-[500] bg-white/90 backdrop-blur-xl border-b py-4 px-6 md:px-12">
         <div class="container mx-auto flex justify-between items-center">
@@ -85,7 +106,6 @@
 
     <section class="py-24 bg-white border-y border-zinc-100 px-6">
         <div class="container mx-auto">
-            <span class="seo-section-title">HASİRPLAST SEO & KONUM DİZİNİ</span>
             <div id="bigSEOGrid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-2"></div>
         </div>
     </section>
@@ -115,28 +135,17 @@
 
                 <div class="lg:col-span-1">
                     <h3 class="footer-heading uppercase">HAKKIMIZDA</h3>
-                    <p class="footer-content">
-                        Biz sadece bir örtü satmıyoruz; size her ortamda konforlu ve hijyenik bir "kendi alanınızı" yaratma özgürlüğü sunuyoruz. 
-                        <strong>Doğada:</strong> Piknik matına, <strong>Huzurda:</strong> Saf tutabileceğiniz bir ibadet alanına, 
-                        <strong>Evde:</strong> Modern bir tasarıma dönüşür.
-                    </p>
+                    <p class="footer-content">Biz sadece bir örtü satmıyoruz; size her ortamda konforlu ve hijyenik bir "kendi alanınızı" yaratma özgürlüğü sunuyoruz. Doğada, huzurda veya evde şık bir tasarıma dönüşür.</p>
                 </div>
 
                 <div class="lg:col-span-1">
                     <h3 class="footer-heading uppercase">ÜRETİM TESİSİMİZ</h3>
-                    <p class="footer-content">
-                        HASİRPLAST olarak, satışını yaptığımız her bir plastik hasır, kilim ve matın arkasında, 
-                        modern üretim standartlarına odaklanmış dinamik üretim tesisimiz yer alıyor. 
-                        Süreçleri kendi çatımız altında titizlikle yönetiyoruz.
-                    </p>
+                    <p class="footer-content">HASİRPLAST olarak, her bir plastik hasırın arkasında modern üretim standartlarına odaklanmış dinamik tesisimiz yer alıyor. Tüm süreçleri kendi çatımız altında yönetiyoruz.</p>
                 </div>
 
                 <div class="lg:col-span-1">
                     <h3 class="footer-heading uppercase">GÜVENLİ ALIŞVERİŞ</h3>
-                    <p class="footer-content">
-                        "WhatsApp ile Sipariş Ver" butonuna tıkladığınızda, karşınızda otomatik bir robot değil; 
-                        sorularınızı yanıtlayan ve canlı fotoğraf paylaşabilen gerçek bir muhatap bulursunuz.
-                    </p>
+                    <p class="footer-content">WhatsApp ile doğrudan bizimle iletişime geçersiniz. Karşınızda sorularınızı yanıtlayan, canlı fotoğraflar paylaşabilen gerçek bir muhatap bulursunuz.</p>
                 </div>
             </div>
             <p class="text-center text-zinc-900 text-[9px] font-black tracking-[0.5em] border-t border-zinc-900 pt-10 uppercase italic">© 2026 HASİRPLAST LİMİTED ŞİRKETİ</p>
@@ -170,10 +179,10 @@
                 <div class="rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl"><img id="d_img" src="" class="w-full h-full object-cover"></div>
                 <div class="flex flex-col justify-center">
                     <h1 id="d_name" class="text-5xl font-black uppercase italic mb-6"></h1>
-                    <p class="text-zinc-500 mb-8 italic">HASİRPLAST güvencesiyle üretilen, leke tutmayan ve kolay temizlenen plastik hasır kilim modelidir.</p>
+                    <p id="d_desc" class="text-zinc-500 mb-8 italic"></p>
                     <div class="flex items-center gap-8">
                         <div><p class="text-[10px] font-black text-zinc-400 uppercase mb-1">Bağ Fiyatı (25 Adet)</p><span class="text-4xl font-black italic text-emerald-600">₺<span id="d_total">0</span></span></div>
-                        <button id="d_add_btn" class="flex-1 bg-black text-white py-6 rounded-2xl font-black uppercase text-xs">Sepete Ekle</button>
+                        <button id="d_add_btn" class="flex-1 bg-black text-white py-6 rounded-2xl font-black uppercase text-xs">Sepete Ekle (1 Bağ)</button>
                     </div>
                 </div>
             </div>
@@ -192,11 +201,30 @@
 
         // Ürünler ve Panel Kartları
         for(let i=1; i<=8; i++) {
-            grid.innerHTML += `<div id="card${i}" class="product-card p-5 cursor-pointer" onclick="openDetail(${i})"><div class="image-holder mb-6"><img id="img${i}" src="antrasit.jpeg"></div><div class="flex flex-col flex-1"><h3 id="name${i}" class="font-black uppercase italic text-lg mb-1 tracking-tighter">Model ${i}</h3><p class="text-zinc-400 text-[9px] font-black mb-6 italic">Hasirplast Orijinal</p><div class="mt-auto flex justify-between items-center" onclick="event.stopPropagation()"><span class="text-2xl font-black italic">₺<span id="price${i}">0</span></span><button onclick="sepeteEkle(${i})" class="w-12 h-12 bg-zinc-50 rounded-xl hover:bg-emerald-500 hover:text-white transition-all flex items-center justify-center"><i class="fa-solid fa-plus"></i></button></div></div></div>`;
-            fields.innerHTML += `<div class="p-4 bg-zinc-50 rounded-xl border space-y-2"><input type="file" onchange="fotoGuncelle(${i}, this)" class="text-[9px] w-full"><input type="text" id="in_name${i}" oninput="kaydet(${i})" placeholder="İsim" class="w-full p-2 border rounded text-xs font-bold"><input type="number" id="in_price${i}" oninput="kaydet(${i})" placeholder="Birim Fiyat" class="w-full p-2 border rounded text-xs font-bold"></div>`;
+            grid.innerHTML += `
+                <div id="card${i}" class="product-card p-5 cursor-pointer" onclick="openDetail(${i})">
+                    <div class="image-holder mb-6"><img id="img${i}" src="antrasit.jpeg"></div>
+                    <div class="flex flex-col flex-1">
+                        <h3 id="name${i}" class="font-black uppercase italic text-lg mb-1 tracking-tighter">Model ${i}</h3>
+                        <p class="text-zinc-400 text-[9px] font-black mb-6 italic">Hasirplast Orijinal</p>
+                        <div class="mt-auto flex justify-between items-center" onclick="event.stopPropagation()">
+                            <span class="text-2xl font-black italic">₺<span id="price${i}">0</span></span>
+                            <button onclick="sepeteEkle(${i})" class="w-12 h-12 bg-zinc-50 rounded-xl hover:bg-emerald-500 hover:text-white transition-all flex items-center justify-center"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>`;
+            
+            fields.innerHTML += `
+                <div class="p-4 bg-zinc-50 rounded-xl border space-y-2">
+                    <p class="text-[10px] font-bold text-zinc-400">Ürün ${i} Ayarları</p>
+                    <input type="file" onchange="fotoGuncelle(${i}, this)" class="text-[9px] w-full">
+                    <input type="text" id="in_name${i}" oninput="kaydet(${i})" placeholder="Model İsmi" class="w-full p-2 border rounded text-xs font-bold">
+                    <input type="number" id="in_price${i}" oninput="kaydet(${i})" placeholder="Birim Fiyat" class="w-full p-2 border rounded text-xs font-bold">
+                    <textarea id="in_desc${i}" oninput="kaydet(${i})" placeholder="Ürün Açıklaması" class="w-full p-2 border rounded text-xs font-bold h-20"></textarea>
+                </div>`;
         }
 
-        // SEO Dizini (150+ Madde)
+        // SEO Dizini
         const locations = ["Beylikdüzü", "Beyoğlu", "Büyükçekmece", "Çatalca", "Eyüp", "Esenler", "Esenyurt", "Fatih", "Gaziosmanpaşa", "Güngören", "Kağıthane", "Küçükçekmece", "Sarıyer", "Silivri", "Sultangazi", "Şişli", "Zeytinburnu", "Ataköy", "Florya", "Yeşilköy", "Yeşilyurt", "Bahçesehir", "Kemerburgaz", "Kemercountry", "Zekeriyaköy", "Levent", "Etiler", "Bebek", "Kadıköy", "Üsküdar", "Ümraniye", "Maltepe", "Kartal", "Pendik", "Tuzla", "Sancaktepe", "Çekmeköy", "Beykoz", "Şile", "Ataşehir"];
         const types = ["Plastik Hasır", "Cami Hasırı", "Piknik Matı", "Balkon Kilimi"];
         let seoHTML = "";
@@ -207,39 +235,73 @@
         function kaydet(i) {
             const name = document.getElementById(`in_name${i}`).value || "Model " + i;
             const price = parseFloat(document.getElementById(`in_price${i}`).value) || 0;
+            const desc = document.getElementById(`in_desc${i}`).value || "HASİRPLAST güvencesiyle üretilen, leke tutmayan ve kolay temizlenen plastik hasır kilim modelidir.";
+            
             document.getElementById(`name${i}`).innerText = name;
             document.getElementById(`price${i}`).innerText = price.toLocaleString();
-            localStorage.setItem(`data_v12_${i}`, JSON.stringify({name, price}));
+            
+            localStorage.setItem(`data_v12_${i}`, JSON.stringify({name, price, desc}));
         }
 
-        function fotoGuncelle(i, f) { if (f.files[0]) { const r = new FileReader(); r.onload = e => { document.getElementById(`img${i}`).src = e.target.result; localStorage.setItem(`img_v12_${i}`, e.target.result); }; r.readAsDataURL(f.files[0]); } }
+        function fotoGuncelle(i, f) { 
+            if (f.files[0]) { 
+                const r = new FileReader(); 
+                r.onload = e => { 
+                    document.getElementById(`img${i}`).src = e.target.result; 
+                    localStorage.setItem(`img_v12_${i}`, e.target.result); // Fotoğraflar artık kaydediliyor
+                }; 
+                r.readAsDataURL(f.files[0]); 
+            } 
+        }
 
+        // Sepete Ekleme (25 Adet Kuralı)
         function sepeteEkle(i) {
             const data = JSON.parse(localStorage.getItem(`data_v12_${i}`)) || { name: "Model "+i, price: 0 };
-            const bagPrice = data.price * 25;
+            const bagPrice = data.price * 25; // 25 ile çarpım kuralı
             const idx = sepet.findIndex(s => s.id === i);
-            if(idx > -1) sepet[idx].qty++; else sepet.push({id: i, name: data.name, price: bagPrice, qty: 1});
+            
+            if(idx > -1) {
+                sepet[idx].qty += 25;
+            } else {
+                sepet.push({id: i, name: data.name, price: data.price, qty: 25});
+            }
             sepetGuncelle(); toggleSepet(true);
         }
 
         function sepetGuncelle() {
             localStorage.setItem('hasir_sepet_v12', JSON.stringify(sepet));
-            document.getElementById('sepetAdet').innerText = sepet.reduce((a, b) => a + b.qty, 0);
+            document.getElementById('sepetAdet').innerText = sepet.reduce((a, b) => a + (b.qty / 25), 0); // Kaç bağ olduğunu gösterir
+            
             const list = document.getElementById('sepetListesi'); list.innerHTML = ""; let total = 0;
             sepet.forEach((item, idx) => {
-                total += item.price * item.qty;
-                list.innerHTML += `<div class="flex justify-between items-center bg-zinc-50 p-4 rounded-xl border"><div><h4 class="font-black text-[10px] uppercase">${item.name}</h4><p class="text-emerald-600 font-bold text-xs">₺${(item.price * item.qty).toLocaleString()}</p></div><div class="flex items-center gap-2"><button onclick="degistir(${idx}, -1)" class="w-6 h-6 bg-white border rounded">-</button><span class="text-xs font-bold">${item.qty}</span><button onclick="degistir(${idx}, 1)" class="w-6 h-6 bg-black text-white rounded">+</button></div></div>`;
+                const subTotal = item.price * item.qty;
+                total += subTotal;
+                list.innerHTML += `
+                    <div class="flex justify-between items-center bg-zinc-50 p-4 rounded-xl border">
+                        <div>
+                            <h4 class="font-black text-[10px] uppercase">${item.name}</h4>
+                            <p class="text-zinc-400 text-[9px] font-bold">${item.qty} Adet (${item.qty / 25} Bağ)</p>
+                            <p class="text-emerald-600 font-bold text-xs">₺${subTotal.toLocaleString()}</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="degistir(${idx}, -25)" class="w-6 h-6 bg-white border rounded">-</button>
+                            <span class="text-xs font-bold">${item.qty / 25}</span>
+                            <button onclick="degistir(${idx}, 25)" class="w-6 h-6 bg-black text-white rounded">+</button>
+                        </div>
+                    </div>`;
             });
             document.getElementById('genelToplam').innerText = total.toLocaleString();
         }
 
-        function degistir(i, v) { sepet[i].qty += v; if(sepet[i].qty < 1) sepet.splice(i, 1); sepetGuncelle(); }
+        function degistir(i, v) { sepet[i].qty += v; if(sepet[i].qty < 25) sepet.splice(i, 1); sepetGuncelle(); }
         function toggleSepet(s) { document.getElementById('sepetSidebar').style.transform = s ? 'translateX(0%)' : 'translateX(100%)'; document.getElementById('sepetOverlay').classList.toggle('hidden', !s); }
         function closeDetail() { document.getElementById('fullDetail').classList.remove('full-detail-active'); }
+        
         function openDetail(i) {
-            const data = JSON.parse(localStorage.getItem(`data_v12_${i}`)) || { name: "Model "+i, price: 0 };
+            const data = JSON.parse(localStorage.getItem(`data_v12_${i}`)) || { name: "Model "+i, price: 0, desc: "" };
             document.getElementById('d_img').src = document.getElementById(`img${i}`).src;
             document.getElementById('d_name').innerText = data.name;
+            document.getElementById('d_desc').innerText = data.desc || "HASİRPLAST güvencesiyle üretilen, leke tutmayan ve kolay temizlenen plastik hasır kilim modelidir.";
             document.getElementById('d_total').innerText = (data.price * 25).toLocaleString();
             document.getElementById('d_add_btn').onclick = () => { sepeteEkle(i); closeDetail(); };
             document.getElementById('fullDetail').classList.add('full-detail-active');
@@ -254,7 +316,7 @@
 
         function whatsappGonder() {
             let t = "*HASİRPLAST YENİ SİPARİŞ*\n\n";
-            sepet.forEach(i => t += `📦 *${i.name}* - ${i.qty} Bağ\n`);
+            sepet.forEach(i => t += `📦 *${i.name}* - ${i.qty / 25} Bağ (${i.qty} Adet)\n`);
             t += `\n*Toplam: ₺${document.getElementById('genelToplam').innerText}*`;
             window.open(`https://wa.me/905336586270?text=${encodeURIComponent(t)}`);
         }
@@ -264,7 +326,13 @@
         window.onload = () => {
             for(let i=1; i<=8; i++) {
                 const d = JSON.parse(localStorage.getItem(`data_v12_${i}`)); const im = localStorage.getItem(`img_v12_${i}`);
-                if(d) { document.getElementById(`in_name${i}`).value = d.name; document.getElementById(`in_price${i}`).value = d.price; document.getElementById(`name${i}`).innerText = d.name; document.getElementById(`price${i}`).innerText = d.price.toLocaleString(); }
+                if(d) { 
+                    document.getElementById(`in_name${i}`).value = d.name; 
+                    document.getElementById(`in_price${i}`).value = d.price; 
+                    document.getElementById(`in_desc${i}`).value = d.desc || "";
+                    document.getElementById(`name${i}`).innerText = d.name; 
+                    document.getElementById(`price${i}`).innerText = d.price.toLocaleString(); 
+                }
                 if(im) document.getElementById(`img${i}`).src = im;
             }
             sepetGuncelle();
